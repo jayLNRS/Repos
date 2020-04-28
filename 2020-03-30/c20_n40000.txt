@@ -1,0 +1,58 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking pp.trunarrative.cloud (be patient)
+Completed 4000 requests
+Completed 8000 requests
+Completed 12000 requests
+Completed 16000 requests
+Completed 20000 requests
+Completed 24000 requests
+Completed 28000 requests
+Completed 32000 requests
+Completed 36000 requests
+Completed 40000 requests
+Finished 40000 requests
+
+
+Server Software:
+Server Hostname:        pp.trunarrative.cloud
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+
+Document Path:          /TruAPI/rest/TruRest/RunJourney
+Document Length:        4305 bytes
+
+Concurrency Level:      20
+Time taken for tests:   3920.766 seconds
+Complete requests:      40000
+Failed requests:        0
+Total transferred:      198440000 bytes
+Total body sent:        30760000
+HTML transferred:       172200000 bytes
+Requests per second:    10.20 [#/sec] (mean)
+Time per request:       1960.383 [ms] (mean)
+Time per request:       98.019 [ms] (mean, across all concurrent requests)
+Transfer rate:          49.43 [Kbytes/sec] received
+                        7.66 kb/s sent
+                        57.09 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      111  176 216.4    147    9763
+Processing:   776 1783 491.9   1699   10795
+Waiting:      776 1782 491.9   1698   10795
+Total:        909 1959 546.8   1872   12976
+
+Percentage of the requests served within a certain time (ms)
+  50%   1872
+  66%   2050
+  75%   2177
+  80%   2268
+  90%   2540
+  95%   2819
+  98%   3198
+  99%   3632
+ 100%  12976 (longest request)
+
