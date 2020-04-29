@@ -10,8 +10,8 @@ $ AUTH_BASIC=xxx ./loadtest
 
 ### 2020-04-29
 
-**Front-end: t3a.xlarge** (Burstable, AMD EPYC 4 vCPU, 16 GB RAM, 5 Gbps Network)  
-**Back-end: t3a.2xlarge** (Burstable, AMD EPYC 8 vCPU, 32 GB RAM, 5 Gbps Network)  
+**Front-end: t3a.xlarge** (Burstable, AMD EPYC 4 vCPU, 16 GB RAM, 5 Gbps Network, $0.2435 hourly, $177.76 monthly)  
+**Back-end: t3a.2xlarge** (Burstable, AMD EPYC 8 vCPU, 32 GB RAM, 5 Gbps Network, $0.3398 hourly, $248.05 monhtly)  
 
 ```
 $ grep 'Requests per second' 2020-04-29/*
@@ -26,8 +26,8 @@ $ grep 'Requests per second' 2020-04-29/*
 
 ### 2020-04-28
 
-**Front-end: t3a.xlarge** (Burstable, AMD EPYC 4 vCPU, 16 GB RAM, 5 Gbps Network)  
-**Back-end: r5a.xlarge** (Memory Optimized, AMD EPYC 4 vCPU, 32 GB RAM, 2880 Mbps EBS, 10 Gbps Network)  
+**Front-end: t3a.xlarge** (Burstable, AMD EPYC 4 vCPU, 16 GB RAM, 5 Gbps Network, $0.2435 hourly, $177.76 monthly)  
+**Back-end: r5a.xlarge** (Memory Optimized, AMD EPYC 4 vCPU, 32 GB RAM, 2880 Mbps EBS, 10 Gbps Network, $0.266 hourly, $194.18 monthly)  
 
 ```
 $ grep 'Requests per second' 2020-04-28/*
@@ -41,8 +41,8 @@ $ grep 'Requests per second' 2020-04-28/*
 
 ### 2020-03-30
 
-**Front-end: m4.2xlarge** (General Purpose, Intel Xeon 8 vCPU, 32 GB RAM, 1000 Mbps EBS, High Network)  
-**Back-end: c4.4xlarge** (Compute Optimized, Intel Xeon 16 vCPU, 30 GB RAM, 2000 Mbps EBS, High Network)  
+**Front-end: m4.2xlarge** (General Purpose, Intel Xeon 8 vCPU, 32 GB RAM, 1000 Mbps EBS, High Network, $0.832 hourly, $607.36 monthly)  
+**Back-end: c4.4xlarge** (Compute Optimized, Intel Xeon 16 vCPU, 30 GB RAM, 2000 Mbps EBS, High Network, $0.95 hourly, $693.50 monthly)  
 
 ```
 $ grep 'Requests per second' 2020-03-30/*
