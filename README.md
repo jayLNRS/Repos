@@ -8,6 +8,20 @@ $ AUTH_BASIC=xxx ./loadtest
 
 ## Load Testing Results
 
+### 2020-05-01
+**Front-end: t3a.xlarge** (Burstable, AMD EPYC 4 vCPU, 16 GB RAM, 5 Gbps Network, $0.2435 hourly, $177.76 monthly)  
+**Back-end: r5a.xlarge** (Memory Optimized, AMD EPYC 4 vCPU, 32 GB RAM, 2880 Mbps EBS, 10 Gbps Network, $0.266 hourly, $194.18 monthly)  
+
+```
+$ grep 'Requests per second' 2020-05-01/*
+2020-05-01/c05_n10000.txt:Requests per second:    3.59 [#/sec] (mean)
+2020-05-01/c10_n20000.txt:Requests per second:    5.99 [#/sec] (mean)
+2020-05-01/c15_n30000.txt:Requests per second:    6.82 [#/sec] (mean)
+2020-05-01/c20_n40000.txt:Requests per second:    6.98 [#/sec] (mean)
+2020-05-01/c25_n50000.txt:Requests per second:    6.73 [#/sec] (mean)
+2020-05-01/c30_n60000.txt:Requests per second:    6.30 [#/sec] (mean)
+```
+
 ### 2020-04-29
 
 **Front-end: t3a.xlarge** (Burstable, AMD EPYC 4 vCPU, 16 GB RAM, 5 Gbps Network, $0.2435 hourly, $177.76 monthly)  
