@@ -1,0 +1,48 @@
+image: 225237029829.dkr.ecr.eu-west-2.amazonaws.com/trunarrative/alpine:base
+
+stages:
+  - test-1
+  - test-2
+  - test-3
+
+variables:
+  CHANNEL: "devops"
+  CT: "application/json"
+  ENV: "pp"
+  PAYLOAD: "payload_${ENV}.json"
+  TIMEOUT: "120"
+  TOOL: "hey"
+  URL: "https://${ENV}.trunarrative.cloud/TruAPI/rest/TruRest/RunJourney"
+
+.load-test:
+  before_script:
+    - export TOKEN=$(aws secretsmanager get-secret-value --secret-id 'pp/ppakos_batchloading_token' --output json --region eu-west-2 | jq -r '.SecretString')
+    - export C="${CI_JOB_NAME/:*/}" N="${CI_JOB_NAME/*:/}"
+    - apk add apache2-utils
+    - wget https://storage.googleapis.com/hey-release/hey_linux_amd64 -O hey && chmod +x hey
+    - echo "$CHANNEL"
+    - echo "$ENV"
+    - echo "$TOOL"
+    - echo "$PAYLOAD"
+    - echo "$URL"
+    - echo "$C"
+    - echo "$N"
+  script:
+    - 'if [[ "$TOOL" == "ab" ]]; then ab -s "$TIMEOUT" -p "$PAYLOAD" -T "$CT" -H "Authorization: Basic $TOKEN" -c "$C" -n "$N" "$URL"; fi'
+    - 'if [[ "$TOOL" == "hey" ]]; then ./hey -t "$TIMEOUT" -D "$PAYLOAD" -T "$CT" -H "Authorization: Basic $TOKEN" -c "$C" -n "$N" -cpus $(nproc) -m POST "$URL"; fi'
+  rules:
+    - if: '$SCHEDULED == "yes"'
+      when: on_success
+    - when: never
+
+1:100:
+  extends: .load-test
+  stage: test-1
+
+10:1000:
+  extends: .load-test
+  stage: test-2
+
+100:10000:
+  extends: .load-test
+  stage: test-3
