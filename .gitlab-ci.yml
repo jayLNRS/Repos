@@ -39,6 +39,7 @@ variables:
     - echo "$ENV"
     - echo "$JMX_FILE"
     - echo "$JOURNEY_ID"
+    - echo "$STRATEGY_ID"
     - echo "$LOOPS"
     - echo "$THREADS"
     - echo "$_THREADS"
@@ -52,7 +53,8 @@ variables:
         -Jthreads="${_THREADS}" \
         -Jloops="${LOOPS}" \
         -Jrequests="${REQUESTS}" \
-        -Jjourney_id="${JOURNEY_ID}" 2>&1 \
+        -Jjourney_id="${JOURNEY_ID}" \
+        -Jstrategy_id="${STRATEGY_ID}" 2>&1 \
         || true ) | tee out.txt
     - summary=$(grep "^summary =.*in.*.*Avg:.*Min:.*Max:.*Err:.*" out.txt | tail -1)
     - 'echo "$summary" | ppslack -H -f "$GITLAB_USER_LOGIN" -t "$CHANNEL" -s "[${ENV^^}] Performance Test (JMX: ${JMX_FILE}, Threads: ${_THREADS}, Requests: ${REQUESTS}, <${CI_PIPELINE_URL}|Pipeline>, <${CI_JOB_URL}|Job>)" || true'
