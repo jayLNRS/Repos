@@ -121,7 +121,7 @@
             &quot;dateOfBirth&quot;: &quot;${__RandomDate(,1900-01-01,2000-01-01,,)}&quot;,&#xd;
             &quot;role&quot;: &quot;APPLICANT&quot;,&#xd;
             &quot;isPrimary&quot;: true,&#xd;
-            &quot;clientReference&quot;: &quot;PerformanceTest&quot;,&#xd;
+            &quot;clientReference&quot;: &quot;${__UUID()}&quot;,&#xd;
             &quot;annualIncome&quot;: ${__Random(10,100)},&#xd;
             &quot;title&quot;: &quot;MR&quot;,&#xd;
             &quot;firstName&quot;: &quot;${__RandomString(5,abcdeghijklmnopqrstuvwxyz, fname)}&quot;,&#xd;
