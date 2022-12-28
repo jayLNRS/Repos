@@ -152,7 +152,7 @@ cleanup:
     - aws secretsmanager get-secret-value --secret-id 'ppslack-config' --query SecretString --output text >~/.config/ppslack
     - aws secretsmanager get-secret-value --secret-id 'tf/assume_role' --query SecretString --output text >assume_role
     - source assume_role "$ENV"
-    - export PGPASSWORD=$(aws secretsmanager get-secret-value --region eu-west-2 --secret-id "tf/${NAME_PREFIX}/platform_database_password" --query SecretString --output text)
+    - export PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id "tf/${NAME_PREFIX}/platform_database_password" --query SecretString --output text)
     - source assume_role -u
     - psql --version
     - vacuumdb --version
