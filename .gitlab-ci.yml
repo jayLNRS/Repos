@@ -16,6 +16,7 @@ stages:
   - test:9
   - test:10
   - test:11
+  - cleanup
 
 variables:
   CHANNEL: "performance-testing"
@@ -139,3 +140,30 @@ threads:100:
   stage: test:11
   variables:
     _THREADS: 100
+
+cleanup:
+  stage: cleanup
+  tags: [infra]
+  variables:
+    DB_HOST: "${NAME_PREFIX}-backend-db.trunarrative.cloud"
+    DB_NAME: platform
+    DB_USER: insight
+  before_script:
+    - aws secretsmanager get-secret-value --secret-id 'ppslack-config' --query SecretString --output text >~/.config/ppslack
+    - aws secretsmanager get-secret-value --secret-id 'tf/assume_role' --query SecretString --output text >assume_role
+    - source assume_role "$ENV"
+    - export PGPASSWORD=$(aws secretsmanager get-secret-value --region eu-west-2 --secret-id "tf/${NAME_PREFIX}/platform_database_password" --query SecretString --output text)
+    - source assume_role -u
+    - psql --version
+    - vacuumdb --version
+    - psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -l
+  script:
+    - export START=$(date +%s)
+    - psql -q -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -v ON_ERROR_STOP=1 -v org_id="$ORG_ID" -f performance_data_clean.sql
+    - vacuumdb -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -z -j 4 -e
+    - export END=$(date +%s)
+    - echo "*[${ENV^^}] BE DB cleaned and vacuumed in $(date -d@$((END-START)) -u +%H:%M:%S) (<${CI_PIPELINE_URL}|Pipeline>, <${CI_JOB_URL}|Job>)*" | ppslack -f "$GITLAB_USER_LOGIN" -t "$CHANNEL"
+  rules:
+    - if: $DB_CLEANUP == "yes"
+      when: always
+    - when: never

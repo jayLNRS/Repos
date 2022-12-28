@@ -28,7 +28,7 @@ begin
     raise exception 'Supplied orgId % (%) does not exist or is not a testing org.', _org_id, _org_name;
   end if;
 
-  raise notice 'Deleting data for OrgId % (%s)...', _org_id, _org_name;
+  raise notice 'Deleting data for OrgId % (%)...', _org_id, _org_name;
 
   with del as (
     delete from "AccountApplications" aa where aa."OrgId" = _org_id
