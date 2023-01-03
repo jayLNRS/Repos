@@ -556,44 +556,6 @@ declare
 begin
 
   with del as (
-    delete from "OrganisationConsortia" where "OrgId" = _org_id
-    returning *
-  )
-  select count(*) from del into _deleted;
-
-  raise notice 'OrganisationConsortia: Deleted % rows in %',
-    _deleted, age( clock_timestamp(), now() );
-
-end;
-$$;
-
-do
-$$
-declare
-  _org_id BIGINT := current_setting( 'myvars.orgid', true );
-  _deleted INTEGER;
-begin
-
-  with del as (
-    delete from "Consortia" where "OrgId" = _org_id
-    returning *
-  )
-  select count(*) from del into _deleted;
-
-  raise notice 'Consortia: Deleted % rows in %',
-    _deleted, age( clock_timestamp(), now() );
-
-end;
-$$;
-
-do
-$$
-declare
-  _org_id BIGINT := current_setting( 'myvars.orgid', true );
-  _deleted INTEGER;
-begin
-
-  with del as (
     delete from "DrivingLicences" where "OrgId" = _org_id
     returning *
   )
@@ -980,25 +942,6 @@ declare
 begin
 
   with del as (
-    delete from "Rules" where "OrgId" = _org_id
-    returning *
-  )
-  select count(*) from del into _deleted;
-
-  raise notice 'Rules: Deleted % rows in %',
-    _deleted, age( clock_timestamp(), now() );
-
-end;
-$$;
-
-do
-$$
-declare
-  _org_id BIGINT := current_setting( 'myvars.orgid', true );
-  _deleted INTEGER;
-begin
-
-  with del as (
     delete from "BatchRuns" where "OrgId" = _org_id
     returning *
   )
@@ -1091,47 +1034,6 @@ begin
 
 end;
 $$;
-
-
-do
-$$
-declare
-  _org_id BIGINT := current_setting( 'myvars.orgid', true );
-  _deleted INTEGER;
-begin
-
-  with del as (
-    delete from "RulesetRunnerConfig" where "OrgId" = _org_id
-    returning *
-  )
-  select count(*) from del into _deleted;
-
-  raise notice 'RulesetRunnerConfig: Deleted % rows in %',
-    _deleted, age( clock_timestamp(), now() );
-
-end;
-$$;
-
-
-do
-$$
-declare
-  _org_id BIGINT := current_setting( 'myvars.orgid', true );
-  _deleted INTEGER;
-begin
-
-  with del as (
-    delete from "Rulesets" where "OrgId" = _org_id
-    returning *
-  )
-  select count(*) from del into _deleted;
-
-  raise notice 'Rulesets: Deleted % rows in %',
-    _deleted, age( clock_timestamp(), now() );
-
-end;
-$$;
-
 
 do
 $$
