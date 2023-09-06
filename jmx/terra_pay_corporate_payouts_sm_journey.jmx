@@ -122,7 +122,7 @@
            &quot;middleName&quot;: &quot;${__RandomString(6,abcdeghijklmnopqrstuvwxyz, mname)}&quot;,&#xd;
            &quot;lastName&quot;: &quot;${__RandomString(6,abcdeghijklmnopqrstuvwxyz, sname)}&quot;,&#xd;
            &quot;isprimary&quot;: true,&#xd;
-           &quot;clientReference&quot;: &quot;${__UUID()}&quot;,&#xd;
+           &quot;clientReference&quot;: &quot;${__UUID()}&quot;&#xd;
         }&#xd;
     ],&#xd;
     &quot;financialAccount&quot;: {&#xd;
@@ -132,7 +132,6 @@
                 &quot;accountNumber&quot;: &quot;${__RandomString(9,123456789,)}&quot;,&#xd;
                 &quot;creditOrDebit&quot;: &quot;${__RandomFromMultipleVars(credit|debit,)}&quot;,&#xd;
                 &quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
-                &quot;effectiveDateTime&quot;: &quot;${date}.000Z&quot;,&#xd;
                 &quot;clientReference&quot;: &quot;${__UUID()}&quot;,&#xd;
                 &quot;effectiveDateTime&quot;: &quot;${date}.000Z&quot;,&#xd;
                 &quot;amount&quot;: ${__Random(100,5000,amt)},&#xd;
