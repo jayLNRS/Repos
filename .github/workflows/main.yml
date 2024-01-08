@@ -1,0 +1,160 @@
+name: Main
+run-name: ${{ github.actor }} initiated a JMeter performance test
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: choice
+        description: "ENV"
+        options:
+          - pp
+      jmx_file_name:
+        required: true
+        type: string
+        description: "JMX file name"
+      journey_id:
+        type: string
+        description: "Journey ID"
+      loops:
+        type: string
+        description: "Loops"
+      name_prefix:
+        required: true
+        type: choice
+        description: "Name Prefx"
+        options:
+          - lon-pp
+        default: "lon-pp"
+      requests:
+        type: string
+        description: "Requests"
+        default: "10"
+      strategy_id:
+        type: number
+        description: "Strategy ID"
+
+jobs:
+  start-runner:
+    uses: ./.github/workflows/start_runner.yml
+  test-1:
+    needs: start-runner
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 1
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-2:
+    needs: test-1
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 10
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-3:
+    needs: test-2
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 20
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-4:
+    needs: test-3
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 30
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-5:
+    needs: test-4
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 40
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-6:
+    needs: test-5
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 50
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-7:
+    needs: test-6
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 60
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-8:
+    needs: test-7
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 70
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-9:
+    needs: test-8
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 80
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-10:
+    needs: test-9
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 90
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}
+  test-11:
+    needs: test-10
+    uses: ./.github/workflows/jmeter_test.yml
+    with:
+      threads: 100
+      env: ${{ inputs.environment }}
+      jmx_file: ${{ inputs.jmx_file_name }}
+      journey_id: ${{ inputs.journey_id }}
+      loops: ${{ inputs.loops }}
+      requests: ${{ inputs.requests }}
+      strategy_id: ${{ inputs.strategy_id }}

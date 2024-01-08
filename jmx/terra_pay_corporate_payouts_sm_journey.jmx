@@ -52,10 +52,10 @@
             <stringProp name="95458540">debit</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-1610751982">
+            <collectionProp name="97981839">
               <stringProp name="118040362">${__UUID()}</stringProp>
               <stringProp name="2085912802">${__P(env,pp)}</stringProp>
-              <stringProp name="-246407226">${__P(strategy_id,1263)}</stringProp>
+              <stringProp name="-246342839">${__P(strategy_id,1288)}</stringProp>
               <stringProp name="1996005113">CREDIT</stringProp>
               <stringProp name="64920780">DEBIT</stringProp>
             </collectionProp>
@@ -137,7 +137,7 @@
                 &quot;amount&quot;: ${__Random(100,5000,amt)},&#xd;
                 &quot;Paymenttype&quot;: &quot;PRE-P2P-BANK&quot;,&#xd;
                 &quot;paymentSubtype&quot;: &quot;&quot;,&#xd;
-				&quot;IBAN&quot;: &quot;IT12EFGH4356344567890&quot;,&#xd;
+				&quot;IBAN&quot;: &quot;${__RandomString(9,123456789,)}&quot;,&#xd;
 				&quot;countryOfTransaction&quot;: &quot;AFG&quot;,&#xd;
                 &quot;externalRuleOutcomes&quot;: [&#xd;
                     {&#xd;

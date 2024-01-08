@@ -52,10 +52,10 @@
             <stringProp name="95458540">debit</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="97981839">
+            <collectionProp name="438577276">
               <stringProp name="118040362">${__UUID()}</stringProp>
               <stringProp name="2085912802">${__P(env,pp)}</stringProp>
-              <stringProp name="-246342839">${__P(strategy_id,1288)}</stringProp>
+              <stringProp name="-244737008">${__P(strategy_id,1405)}</stringProp>
               <stringProp name="1996005113">CREDIT</stringProp>
               <stringProp name="64920780">DEBIT</stringProp>
             </collectionProp>
@@ -109,40 +109,27 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
     &quot;accountStrategyId&quot;: ${strategy_id},&#xd;
-    &quot;accountReference&quot;: &quot;&quot;,&#xd;
-    &quot;application&quot;: {&#xd;
-        &quot;applicationDateTime&quot;: &quot;${__dateTimeConvert(${__timeShift(,${__time()},-PT${__Random(10000,100000)}M,,)},,yyyy-MM-dd&apos;T&apos;HH:mm:ss,date)}.000Z&quot;,&#xd;
-        &quot;country&quot;: &quot;USA&quot;,&#xd;
-        &quot;clientApplicationPurpose&quot;: &quot;GlobalSS&quot;&#xd;
-    },&#xd;
-    &quot;person&quot;: [&#xd;
-        {&#xd;
-           &quot;role&quot;: &quot;APPLICANT&quot;,&#xd;
-           &quot;firstName&quot;: &quot;${__RandomString(5,abcdeghijklmnopqrstuvwxyz, fname)}&quot;,&#xd;
-           &quot;middleName&quot;: &quot;${__RandomString(6,abcdeghijklmnopqrstuvwxyz, mname)}&quot;,&#xd;
-           &quot;lastName&quot;: &quot;${__RandomString(6,abcdeghijklmnopqrstuvwxyz, sname)}&quot;,&#xd;
-           &quot;isprimary&quot;: true,&#xd;
-           &quot;clientReference&quot;: &quot;${__UUID()}&quot;&#xd;
-        }&#xd;
-    ],&#xd;
+    &quot;accountReference&quot;: &quot;TMTestAccount017&quot;,&#xd;
     &quot;financialAccount&quot;: {&#xd;
         &quot;financialTransaction&quot;: [&#xd;
             {&#xd;
-                &quot;sortCode&quot;: &quot;${__RandomString(2,0123456789,)}-${__RandomString(2,0123456789,)}-${__RandomString(2,0123456789,)}&quot;,&#xd;
-                &quot;accountNumber&quot;: &quot;${__RandomString(9,123456789,)}&quot;,&#xd;
+                &quot;clientReference&quot;: &quot;&quot;,&#xd;
+                &quot;sortCode&quot;: &quot;&quot;,&#xd;
+                &quot;accountNumber&quot;: &quot;&quot;,&#xd;
+                &quot;IBAN&quot;: &quot;${__RandomString(8,1234567890,iban)}&quot;,&#xd;
+                &quot;accountHolder&quot;: &quot;${__RandomString(8,abcdefghijklmnopqrstuvwxyz)}&quot;,&#xd;
                 &quot;creditOrDebit&quot;: &quot;${__RandomFromMultipleVars(credit|debit,)}&quot;,&#xd;
                 &quot;currencyCode&quot;: &quot;USD&quot;,&#xd;
-                &quot;clientReference&quot;: &quot;${__UUID()}&quot;,&#xd;
-                &quot;effectiveDateTime&quot;: &quot;${date}.000Z&quot;,&#xd;
-                &quot;amount&quot;: ${__Random(100,5000,amt)},&#xd;
-                &quot;Paymenttype&quot;: &quot;PRE-P2P-BANK&quot;,&#xd;
+                &quot;paymentType&quot;: &quot;Refund&quot;,&#xd;
                 &quot;paymentSubtype&quot;: &quot;&quot;,&#xd;
-				&quot;IBAN&quot;: &quot;${__RandomString(9,123456789,)}&quot;,&#xd;
-				&quot;countryOfTransaction&quot;: &quot;AFG&quot;,&#xd;
+                &quot;countryOfTransaction&quot;: &quot;GBR&quot;,&#xd;
+                &quot;amount&quot;: &quot;${__Random(100,5000,amount)}&quot;,&#xd;
+                &quot;paymentReference&quot;: &quot;${__RandomString(12,abcdefghijklmnopqrstuvwxyz)}&quot;,&#xd;
+                &quot;effectiveDateTime&quot;: &quot;${__dateTimeConvert(${__timeShift(,${__time()},-PT${__Random(10000,100000)}M,,)},,yyyy-MM-dd&apos;T&apos;HH:mm:ss,date)}.000Z&quot;,&#xd;
                 &quot;externalRuleOutcomes&quot;: [&#xd;
                     {&#xd;
-                        &quot;code&quot;: &quot;IssuanceTM&quot;,&#xd;
-                        &quot;outcome&quot;: &quot;TRUE&quot;&#xd;
+                        &quot;code&quot;: &quot;Time&quot;,&#xd;
+                        &quot;outcome&quot;: &quot;06&quot;&#xd;
                     }&#xd;
                 ]&#xd;
             }&#xd;

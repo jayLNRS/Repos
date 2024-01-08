@@ -1,0 +1,20 @@
+name: Terminate Performance Runner
+on:
+  workflow_dispatch:
+  workflow_call:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  stop-ec2:
+    runs-on: [self-hosted, rn-runner]
+    container:
+      image: 225237029829.dkr.ecr.eu-west-2.amazonaws.com/trunarrative/alpine:infra
+    steps:
+      - uses: LexisNexis-RBA/rn-sre-cicd/assume_role@v1
+      - name: Terminating Performance Runner
+        shell: bash
+        run: | 
+          source assume_role pp
+          echo "Stopping the Performance Test Runner"
+          aws autoscaling update-auto-scaling-group --auto-scaling-group-name lon-mgmt-github-runner-performance --min-size 0 --desired-capacity 0
+          source assume_role -u
