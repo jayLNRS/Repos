@@ -11,6 +11,6 @@ jobs:
         shell: bash
         run: | 
           source assume_role pp
-          aws autoscaling update-auto-scaling-group --auto-scaling-group-name lon-mgmt-github-runner-performance --min-size 1 --desired-capacity 1
+          aws autoscaling update-auto-scaling-group --auto-scaling-group-name lon-mgmt-github-runner-performance --min-size 1 --max-size 1 --desired-capacity 1
           echo "Starting the Performance Test Runner"
           source assume_role -u
