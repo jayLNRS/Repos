@@ -207,7 +207,7 @@
                 &quot;externalRuleOutcomes&quot;: [&#xd;
                     {&#xd;
                         &quot;code&quot;: &quot;EntityType&quot;,&#xd;
-                        &quot;outcome&quot;: &quot;Individual&quot;&#xd;
+                        &quot;outcome&quot;: &quot;${__RandomFromMultipleVars(outcome0|outcome1,)}&quot;&#xd;
                     }&#xd;
                 ]&#xd;
             }&#xd;
