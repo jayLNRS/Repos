@@ -1187,6 +1187,7 @@ begin
 end;
 $$;
 
+
 do
 $$
 declare
@@ -1205,3 +1206,22 @@ begin
 
 end;
 $$;
+
+DO $$
+DECLARE
+    rec_rule record;
+BEGIN
+    FOR rec_rule IN
+		SELECT p.proname,ltrim(split_part(p.proname, 'zz_compiled_rule_', 2),'0')::integer "RuleId"
+        FROM pg_catalog.pg_namespace n
+        JOIN pg_catalog.pg_proc p ON (p.pronamespace = n.oid)
+		LEFT JOIN "Rules" r ON (r."Id"=ltrim(split_part(p.proname, 'zz_compiled_rule_', 2),'0')::integer)
+        WHERE p.prokind='f'
+              AND n.nspname='compiled_rules'
+              AND p.proname like 'zz_compiled_rule%'
+			  AND r."Id" is null
+	  LOOP
+	      RAISE NOTICE 'DROP FUNCTION IF EXISTS compiled_rules.%',rec_rule.proname;
+	      EXECUTE 'DROP FUNCTION IF EXISTS compiled_rules.'||rec_rule.proname;
+	  END LOOP;
+END $$;
