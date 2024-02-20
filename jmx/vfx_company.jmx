@@ -1,0 +1,3 @@
+# JMeter generated Header file
+Content-type	application/json
+Authorization	Basic ${__P(token)}
