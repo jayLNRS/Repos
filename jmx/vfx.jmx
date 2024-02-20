@@ -1,3 +1,319 @@
-# JMeter generated Header file
-Content-type	application/json
-Authorization	Basic ${__P(token)}
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="PerformanceTest" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.comments"></stringProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(loops, 6)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads, 1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(period, 0)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">30</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="AccountCounter1" enabled="true">
+          <stringProp name="CounterConfig.start">0</stringProp>
+          <stringProp name="CounterConfig.end">6</stringProp>
+          <stringProp name="CounterConfig.incr">1</stringProp>
+          <stringProp name="CounterConfig.name">AccountCounter</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="PaymentCounter1" enabled="true">
+          <stringProp name="CounterConfig.start">0</stringProp>
+          <stringProp name="CounterConfig.end">6</stringProp>
+          <stringProp name="CounterConfig.incr">1</stringProp>
+          <stringProp name="CounterConfig.name">PaymentCounter</stringProp>
+          <stringProp name="CounterConfig.format"></stringProp>
+          <boolProp name="CounterConfig.per_user">false</boolProp>
+        </CounterConfig>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Basic ${__P(token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request ${AccountCounter1}" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="name" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${AccountCounter}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">name</stringProp>
+              </elementProp>
+              <elementProp name="loop" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${Loop Controller}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">loop</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${env}.trunarrative.cloud</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/TruAccountAPI/rest/Accounts/v1/RunStrategy</stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </LoopController>
+        <hashTree/>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+          <collectionProp name="UserParameters.names">
+            <stringProp name="-1562235024">thread_id</stringProp>
+            <stringProp name="100589">env</stringProp>
+            <stringProp name="-1587595929">strategy_id</stringProp>
+            <stringProp name="-1352291591">credit</stringProp>
+            <stringProp name="95458540">debit</stringProp>
+            <stringProp name="2988448">acr0</stringProp>
+            <stringProp name="2988449">acr1</stringProp>
+            <stringProp name="2988450">acr2</stringProp>
+            <stringProp name="2988451">acr3</stringProp>
+            <stringProp name="2988452">acr4</stringProp>
+            <stringProp name="2988453">acr5</stringProp>
+            <stringProp name="2988454">acr6</stringProp>
+            <stringProp name="1360191598">payType0</stringProp>
+            <stringProp name="1360191599">payType1</stringProp>
+            <stringProp name="1360191600">payType2</stringProp>
+            <stringProp name="1360191601">payType3</stringProp>
+            <stringProp name="1360191602">payType4</stringProp>
+            <stringProp name="1360191603">payType5</stringProp>
+            <stringProp name="1360191604">payType6</stringProp>
+            <stringProp name="57991966">outcome0</stringProp>
+            <stringProp name="57991967">outcome1</stringProp>
+            <stringProp name="3059624">cot0</stringProp>
+            <stringProp name="3059625">cot1</stringProp>
+            <stringProp name="3059626">cot2</stringProp>
+          </collectionProp>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="-1347911746">
+              <stringProp name="118040362">${__UUID()}</stringProp>
+              <stringProp name="2085912802">${__P(env,pp)}</stringProp>
+              <stringProp name="-244503485">${__P(strategy_id,1480)}</stringProp>
+              <stringProp name="1996005113">CREDIT</stringProp>
+              <stringProp name="64920780">DEBIT</stringProp>
+              <stringProp name="-1870021085">AC211278</stringProp>
+              <stringProp name="-1870021084">AC211279</stringProp>
+              <stringProp name="-1870021062">AC211280</stringProp>
+              <stringProp name="-1870021061">AC211281</stringProp>
+              <stringProp name="-1870021060">AC211282</stringProp>
+              <stringProp name="-1870021059">AC211283</stringProp>
+              <stringProp name="-1870021058">AC211284</stringProp>
+              <stringProp name="1350155619">Private</stringProp>
+              <stringProp name="746727493">Corporate</stringProp>
+              <stringProp name="1434757714">High-Risk-Corporate</stringProp>
+              <stringProp name="-597729616">High-Risk-Private</stringProp>
+              <stringProp name="-1984179155">Mass-Payment</stringProp>
+              <stringProp name="1350155619">Private</stringProp>
+              <stringProp name="746727493">Corporate</stringProp>
+              <stringProp name="2583950">TRUE</stringProp>
+              <stringProp name="66658563">FALSE</stringProp>
+              <stringProp name="70359">GBR</stringProp>
+              <stringProp name="84323">USA</stringProp>
+              <stringProp name="69877">FRA</stringProp>
+            </collectionProp>
+          </collectionProp>
+          <boolProp name="UserParameters.per_iteration">true</boolProp>
+        </UserParameters>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${AccountCounter1}${PaymentCounter1}${Loop Controller} Request ${thread_counter}" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;accountStrategyId&quot;: ${strategy_id},&#xd;
+    &quot;accountReference&quot;: &quot;${__RandomFromMultipleVars(acr${AccountCounter},)}&quot;,&#xd;
+    &quot;person&quot;: [&#xd;
+        {&#xd;
+            &quot;role&quot;: &quot;BENEFICIARY&quot;,&#xd;
+            &quot;isprimary&quot;: false,&#xd;
+            &quot;clientReference&quot;: &quot;&quot;,&#xd;
+            &quot;dateOfBirth&quot;: &quot;1964-06-19&quot;, &#xd;
+            &quot;emailAddress&quot;: &quot;test@email.com&quot;,&#xd;
+            &quot;firstName&quot;: &quot;Boris&quot;,&#xd;
+            &quot;middleName&quot;: &quot;&quot;,&#xd;
+            &quot;lastName&quot;: &quot;Johnson&quot;,&#xd;
+            &quot;mobilePhoneNumber&quot;: &quot;0123456789&quot;,&#xd;
+            &quot;residentialAddress&quot;: [ &#xd;
+                {&#xd;
+                    &quot;addressLine1&quot;: &quot;2 Test Street&quot;,&#xd;
+                    &quot;addressLine2&quot;: &quot;Leeds&quot;,&#xd;
+                    &quot;addressLine3&quot;: &quot;&quot;,&#xd;
+                    &quot;addressLine4&quot;: &quot;&quot;,&#xd;
+                    &quot;zipPostcode&quot;: &quot;LS7 2JF&quot;,&#xd;
+                    &quot;country&quot;: &quot;GBR&quot; &#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;externalRuleOutcomes&quot;: [&#xd;
+                {&#xd;
+                    &quot;code&quot;: &quot;Payment Screening&quot;,&#xd;
+                    &quot;outcome&quot;: &quot;Payment Screening&quot;&#xd;
+                }&#xd;
+            ]&#xd;
+        }&#xd;
+    ],&#xd;
+    &quot;financialAccount&quot;: {&#xd;
+        &quot;financialTransaction&quot;: [&#xd;
+            {&#xd;
+                &quot;clientReference&quot;: &quot;Perf-Test-${thread_id}&quot;,&#xd;
+                &quot;sortCode&quot;: &quot;000000&quot;,&#xd;
+                &quot;accountNumber&quot;: &quot;${__RandomString(8,123456789,myvar)}&quot;,&#xd;
+                &quot;IBAN&quot;: &quot;${myvar}&quot;,&#xd;
+                &quot;accountHolder&quot;: &quot;Boris Johnson&quot;,&#xd;
+                &quot;creditOrDebit&quot;: &quot;${__RandomFromMultipleVars(credit|debit,)}&quot;,&#xd;
+                &quot;currencyCode&quot;: &quot;GBP&quot;,&#xd;
+                &quot;countryOfTransaction&quot;: &quot;${__RandomFromMultipleVars(cot0|cot1|cot2,)}&quot;,&#xd;
+                &quot;effectiveDateTime&quot;: &quot;2024-02-05T07:27:17Z&quot;,&#xd;
+                &quot;amount&quot;: ${__Random(1,2500)}.${__Random(0,9)}${__Random(0,9)}, &#xd;
+                &quot;paymentType&quot;: &quot;${__RandomFromMultipleVars(payType${PaymentCounter},)}&quot; ,&#xd;
+                &quot;paymentSubtype&quot;: &quot;&quot;,&#xd;
+                &quot;paymentReference&quot;: &quot;&quot;,&#xd;
+                &quot;externalRuleOutcomes&quot;: [&#xd;
+                    {&#xd;
+                        &quot;code&quot;: &quot;NEW-CLIENT&quot;,&#xd;
+                        &quot;outcome&quot;: &quot;${__RandomFromMultipleVars(outcome0|outcome1,)}&quot;&#xd;
+                    },&#xd;
+                    {&#xd;
+                        &quot;code&quot;: &quot;Beneficiary-Address&quot;,&#xd;
+                        &quot;outcome&quot;: &quot;${__RandomFromMultipleVars(cot0|cot1|cot2,)}&quot; &#xd;
+                    },&#xd;
+                    {&#xd;
+                        &quot;code&quot;: &quot;Country Status&quot;,&#xd;
+                        &quot;outcome&quot;: &quot;HIGHRISK&quot;&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        ]&#xd;
+    }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
