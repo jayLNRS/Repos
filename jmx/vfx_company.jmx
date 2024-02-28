@@ -160,7 +160,7 @@
     &quot;company&quot;: [&#xd;
         {&#xd;
             &quot;businessName&quot;: &quot;TESCO PLC&quot;,&#xd;
-            &quot;clientReference&quot;: &quot;ExampleCompany&quot;,&#xd;
+            &quot;clientReference&quot;: &quot;&quot;,&#xd;
             &quot;isPrimary&quot;: false,&#xd;
             &quot;companyType&quot;: &quot;OTHER&quot;,&#xd;
             &quot;companyAddress&quot;: [&#xd;
