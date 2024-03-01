@@ -15,7 +15,7 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${__P(loops, 6)}</stringProp>
+          <stringProp name="LoopController.loops">${__P(loops, 5)}</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${__P(threads, 1)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(period, 0)}</stringProp>
@@ -27,7 +27,7 @@
       <hashTree>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="AccountCounter1" enabled="true">
           <stringProp name="CounterConfig.start">0</stringProp>
-          <stringProp name="CounterConfig.end">6</stringProp>
+          <stringProp name="CounterConfig.end">4</stringProp>
           <stringProp name="CounterConfig.incr">1</stringProp>
           <stringProp name="CounterConfig.name">AccountCounter</stringProp>
           <stringProp name="CounterConfig.format"></stringProp>
@@ -36,7 +36,7 @@
         <hashTree/>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="PaymentCounter1" enabled="true">
           <stringProp name="CounterConfig.start">0</stringProp>
-          <stringProp name="CounterConfig.end">6</stringProp>
+          <stringProp name="CounterConfig.end">4</stringProp>
           <stringProp name="CounterConfig.incr">1</stringProp>
           <stringProp name="CounterConfig.name">PaymentCounter</stringProp>
           <stringProp name="CounterConfig.format"></stringProp>
@@ -102,15 +102,11 @@
             <stringProp name="2988450">acr2</stringProp>
             <stringProp name="2988451">acr3</stringProp>
             <stringProp name="2988452">acr4</stringProp>
-            <stringProp name="2988453">acr5</stringProp>
-            <stringProp name="2988454">acr6</stringProp>
             <stringProp name="1360191598">payType0</stringProp>
             <stringProp name="1360191599">payType1</stringProp>
             <stringProp name="1360191600">payType2</stringProp>
             <stringProp name="1360191601">payType3</stringProp>
             <stringProp name="1360191602">payType4</stringProp>
-            <stringProp name="1360191603">payType5</stringProp>
-            <stringProp name="1360191604">payType6</stringProp>
             <stringProp name="57991966">outcome0</stringProp>
             <stringProp name="57991967">outcome1</stringProp>
             <stringProp name="3059624">cot0</stringProp>
@@ -118,26 +114,22 @@
             <stringProp name="3059626">cot2</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-1347911746">
+            <collectionProp name="-1228261289">
               <stringProp name="118040362">${__UUID()}</stringProp>
               <stringProp name="2085912802">${__P(env,pp)}</stringProp>
               <stringProp name="-244503485">${__P(strategy_id,1480)}</stringProp>
               <stringProp name="1996005113">CREDIT</stringProp>
               <stringProp name="64920780">DEBIT</stringProp>
-              <stringProp name="-1870021085">AC211278</stringProp>
-              <stringProp name="-1870021084">AC211279</stringProp>
-              <stringProp name="-1870021062">AC211280</stringProp>
-              <stringProp name="-1870021061">AC211281</stringProp>
-              <stringProp name="-1870021060">AC211282</stringProp>
-              <stringProp name="-1870021059">AC211283</stringProp>
               <stringProp name="-1870021058">AC211284</stringProp>
+              <stringProp name="-1870020312">AC211316</stringProp>
+              <stringProp name="-1870020311">AC211317</stringProp>
+              <stringProp name="-1870020310">AC211318</stringProp>
+              <stringProp name="-1870020309">AC211319</stringProp>
               <stringProp name="1350155619">Private</stringProp>
               <stringProp name="746727493">Corporate</stringProp>
-              <stringProp name="1434757714">High-Risk-Corporate</stringProp>
               <stringProp name="-597729616">High-Risk-Private</stringProp>
+              <stringProp name="1434757714">High-Risk-Corporate</stringProp>
               <stringProp name="-1984179155">Mass-Payment</stringProp>
-              <stringProp name="1350155619">Private</stringProp>
-              <stringProp name="746727493">Corporate</stringProp>
               <stringProp name="2583950">TRUE</stringProp>
               <stringProp name="66658563">FALSE</stringProp>
               <stringProp name="70359">GBR</stringProp>
@@ -256,80 +248,6 @@
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
-        <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
         <hashTree/>
       </hashTree>
     </hashTree>
