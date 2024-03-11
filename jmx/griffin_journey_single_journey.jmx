@@ -48,8 +48,6 @@
             <stringProp name="-1562235024">thread_id</stringProp>
             <stringProp name="973187578">journey_id</stringProp>
             <stringProp name="100589">env</stringProp>
-            <stringProp name="-1069606533">journey_id01</stringProp>
-            <stringProp name="-1069606532">journey_id02</stringProp>
             <stringProp name="3057579">cmp1</stringProp>
             <stringProp name="3057580">cmp2</stringProp>
             <stringProp name="3057581">cmp3</stringProp>
@@ -57,12 +55,10 @@
             <stringProp name="3057583">cmp5</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-785979272">
+            <collectionProp name="1796105870">
               <stringProp name="118040362">${__UUID()}</stringProp>
               <stringProp name="1555186313">${__P(journey_id,22448)}</stringProp>
               <stringProp name="2085912802">${__P(env,pp)}</stringProp>
-              <stringProp name="1555187274">${__P(journey_id,22449)}</stringProp>
-              <stringProp name="1555208416">${__P(journey_id,22450)}</stringProp>
               <stringProp name="1840770426">Limited</stringProp>
               <stringProp name="76732">Ltd</stringProp>
               <stringProp name="-1651459356">Partnership</stringProp>
@@ -118,7 +114,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-	&quot;journeyId&quot;: ${journey_id},&#xd;
+	&quot;journeyID&quot;: ${journey_id},&#xd;
 	&quot;customerReference&quot;: &quot;&quot;,&#xd;
 	&quot;application&quot;: {&#xd;
 		&quot;clientApplicationReference&quot;: &quot;&quot;,&#xd;
@@ -136,114 +132,10 @@
 			&quot;addressLine1&quot;: &quot;${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)}&quot;,&#xd;
 			&quot;addressLine2&quot;: &quot;${__RandomString(8,abcdeghijklmnopqrstuvwxyz)}&quot;,&#xd;
 			&quot;zipPostcode&quot;: &quot;${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)}&quot;,&#xd;
-			&quot;country&quot;: &quot;GBR&quot;&#xd;
+			&quot;country&quot;: &quot;United Kingdom&quot;&#xd;
 		}],&#xd;
 		&quot;emailAddress&quot;: &quot;${__RandomString(10,abcdefghij,)}@example.com&quot;,&#xd;
 		&quot;finance&quot;: {},&#xd;
-		&quot;website&quot;: &quot;www.${__RandomString(8,abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)}.com&quot;,&#xd;
-		&quot;percentShareholding&quot;: &quot;${__Random(1,100)}&quot;&#xd;
-	}]&#xd;
-}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
-            <boolProp name="HTTPSampler.image_parser">false</boolProp>
-            <boolProp name="HTTPSampler.concurrentDwn">false</boolProp>
-            <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-            <boolProp name="HTTPSampler.md5">false</boolProp>
-            <intProp name="HTTPSampler.ipSourceType">0</intProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${loop_counter} Request ${thread_counter}:${counter}" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-	&quot;journeyId&quot;: ${journey_id01},&#xd;
-	&quot;customerReference&quot;: &quot;&quot;,&#xd;
-	&quot;application&quot;: {&#xd;
-		&quot;clientApplicationReference&quot;: &quot;&quot;,&#xd;
-		&quot;country&quot;: &quot;GBR&quot;,&#xd;
-		&quot;deviceId&quot;: &quot;&quot;,&#xd;
-		&quot;clientDecision&quot;: &quot;&quot;,&#xd;
-		&quot;clientDecisionReason&quot;: &quot;&quot;&#xd;
-	},&#xd;
-	&quot;company&quot;: [{&#xd;
-		&quot;businessName&quot;: &quot;${__RandomString(15,abcdeghijklmnopqrstuvwxyz, bname)}&quot;,&#xd;
-		&quot;businessRegNumber&quot;: &quot;${__RandomString(8,123456789,n)}&quot;,&#xd;
-		&quot;companyTelephoneNumber&quot;: &quot;${__RandomString(11,123456789,)}&quot;,&#xd;
-		&quot;companyType&quot;: &quot;${__RandomFromMultipleVars(cmp1|cmp2|cmp3|cmp4|cmp5,)}&quot;,&#xd;
-		&quot;companyAddress&quot;: [{&#xd;
-			&quot;addressLine1&quot;: &quot;${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)}&quot;,&#xd;
-			&quot;addressLine2&quot;: &quot;${__RandomString(8,abcdeghijklmnopqrstuvwxyz)}&quot;,&#xd;
-			&quot;zipPostcode&quot;: &quot;${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)}&quot;,&#xd;
-			&quot;country&quot;: &quot;GBR&quot;&#xd;
-		}],&#xd;
-		&quot;emailAddress&quot;: &quot;${__RandomString(10,abcdefghij,)}@example.com&quot;,&#xd;
-		&quot;finance&quot;: {&#xd;
-&#xd;
-		},&#xd;
-		&quot;website&quot;: &quot;www.${__RandomString(8,abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)}.com&quot;,&#xd;
-		&quot;percentShareholding&quot;: &quot;${__Random(1,100)}&quot;&#xd;
-	}]&#xd;
-}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">false</boolProp>
-            <boolProp name="HTTPSampler.image_parser">false</boolProp>
-            <boolProp name="HTTPSampler.concurrentDwn">false</boolProp>
-            <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-            <boolProp name="HTTPSampler.md5">false</boolProp>
-            <intProp name="HTTPSampler.ipSourceType">0</intProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${loop_counter} Request ${thread_counter}:${counter}" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-	&quot;journeyId&quot;: ${journey_id02},&#xd;
-	&quot;customerReference&quot;: &quot;&quot;,&#xd;
-	&quot;application&quot;: {&#xd;
-		&quot;clientApplicationReference&quot;: &quot;&quot;,&#xd;
-		&quot;country&quot;: &quot;GBR&quot;,&#xd;
-		&quot;deviceId&quot;: &quot;&quot;,&#xd;
-		&quot;clientDecision&quot;: &quot;&quot;,&#xd;
-		&quot;clientDecisionReason&quot;: &quot;&quot;&#xd;
-	},&#xd;
-	&quot;company&quot;: [{&#xd;
-		&quot;businessName&quot;: &quot;${__RandomString(15,abcdeghijklmnopqrstuvwxyz, bname)}&quot;,&#xd;
-		&quot;businessRegNumber&quot;: &quot;${__RandomString(8,123456789,n)}&quot;,&#xd;
-		&quot;companyTelephoneNumber&quot;: &quot;${__RandomString(11,123456789,)}&quot;,&#xd;
-		&quot;companyType&quot;: &quot;${__RandomFromMultipleVars(cmp1|cmp2|cmp3|cmp4|cmp5,)}&quot;,&#xd;
-		&quot;companyAddress&quot;: [{&#xd;
-			&quot;addressLine1&quot;: &quot;${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)}&quot;,&#xd;
-			&quot;addressLine2&quot;: &quot;${__RandomString(8,abcdeghijklmnopqrstuvwxyz)}&quot;,&#xd;
-			&quot;zipPostcode&quot;: &quot;${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789)}&quot;,&#xd;
-			&quot;country&quot;: &quot;GBR&quot;&#xd;
-		}],&#xd;
-		&quot;emailAddress&quot;: &quot;${__RandomString(10,abcdefghij,)}@example.com&quot;,&#xd;
-		&quot;finance&quot;: {&#xd;
-&#xd;
-		},&#xd;
 		&quot;website&quot;: &quot;www.${__RandomString(8,abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)}.com&quot;,&#xd;
 		&quot;percentShareholding&quot;: &quot;${__Random(1,100)}&quot;&#xd;
 	}]&#xd;
