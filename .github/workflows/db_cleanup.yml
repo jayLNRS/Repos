@@ -1,4 +1,4 @@
-name: Cleanup
+name: DB Cleanup
 run-name: ${{ github.actor }} is performing a DB cleanup
 on:
   workflow_dispatch:

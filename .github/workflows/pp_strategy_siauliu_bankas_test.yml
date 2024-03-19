@@ -1,0 +1,23 @@
+name: Test Strategy - Siauliu Bankas
+run-name: ${{ github.actor }} initiated a JMeter performance test
+on:
+  workflow_dispatch:
+    inputs:
+      loops:
+        type: string
+        description: "Loops"
+      requests:
+        type: string
+        description: "Requests"
+        default: "100"
+jobs:
+  test-flow:
+    uses: ./.github/workflows/main.yml
+    with:
+      environment: "pp"
+      jmx_file_name: "Siauliu_Bankas"
+      strategy_id: "1522"
+      loops: ${{ inputs.loops }}
+      name_prefix: "lon-pp"
+      requests: ${{ inputs.requests }}
+

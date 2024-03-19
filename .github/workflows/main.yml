@@ -1,38 +1,22 @@
-name: Main
+name: General Performance Tests
 run-name: ${{ github.actor }} initiated a JMeter performance test
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       environment:
-        required: true
-        type: choice
-        description: "ENV"
-        options:
-          - pp
-      jmx_file_name:
-        required: true
         type: string
-        description: "JMX file name"
+      jmx_file_name:
+        type: string
       journey_id:
         type: string
-        description: "Journey ID"
       loops:
         type: string
-        description: "Loops"
       name_prefix:
-        required: true
-        type: choice
-        description: "Name Prefx"
-        options:
-          - lon-pp
-        default: "lon-pp"
+        type: string
       requests:
         type: string
-        description: "Requests"
-        default: "10"
       strategy_id:
-        type: number
-        description: "Strategy ID"
+        type: string
 
 jobs:
   start-runner:
