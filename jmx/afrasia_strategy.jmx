@@ -41,7 +41,7 @@
           <boolProp name="CounterConfig.per_user">false</boolProp>
         </CounterConfig>
         <hashTree/>
-        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters">
           <collectionProp name="UserParameters.names">
             <stringProp name="-1562235024">thread_id</stringProp>
             <stringProp name="100589">env</stringProp>
@@ -77,10 +77,10 @@
             <stringProp name="422220799">PepType4</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="-936581804">
+            <collectionProp name="-1039860117">
               <stringProp name="118040362">${__UUID()}</stringProp>
               <stringProp name="2085912802">${__P(env,pp)}</stringProp>
-              <stringProp name="-244650518">${__P(strategy_id,1432)}</stringProp>
+              <stringProp name="-244497719">${__P(strategy_id,1486)}</stringProp>
               <stringProp name="1996005113">CREDIT</stringProp>
               <stringProp name="64920780">DEBIT</stringProp>
               <stringProp name="66687">CHD</stringProp>
