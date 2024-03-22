@@ -1,4 +1,4 @@
-name: Test Strategy - Afrasia
+name: JM Test - Afrasia Strategy
 run-name: ${{ github.actor }} initiated a JMeter performance test
 on:
   workflow_dispatch:

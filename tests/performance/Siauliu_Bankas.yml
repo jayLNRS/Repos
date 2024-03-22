@@ -1,0 +1,126 @@
+scenarios:
+  - name: "Test Siauliu Bankas Strategy in PP"
+    flow:
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+              "accountStrategyId": 1522,
+              "accountReference": "",
+              "application": {
+                  "clientApplicationPurpose": "PAYMENTSCREENING",
+                  "clientRiskLevel": "{{ risk_level }}",
+                  "customerReference": "{{ $randCatchPhrase() }}"
+              },
+              "company": [
+                  {
+                      "clientReference": "",
+                      "isPrimary": true,
+                      "businessName": "{{ $randFullName() }}",
+                      "companyType": "OTHER",
+                      "companyAddress": [
+                          {
+                              "standardised": {
+                                  "buildingNumber": "",
+                                  "entrance": "",
+                                  "flat": "",
+                                  "houseName": "",
+                                  "houseNumber": "",
+                                  "street": "",
+                                  "city": "",
+                                  "cityDistrict": "",
+                                  "suburb": "",
+                                  "state": "",
+                                  "stateDistrict": "",
+                                  "postcode": "",
+                                  "poBox": "",
+                                  "country": ""
+                              }
+                          }
+                      ],
+                      "finance": {
+                          "bankAccount": [
+                              {
+                                  "name": "{{ $randFullName() }}",
+                                  "sortCode": "",
+                                  "accountNumber": "",
+                                  "IBAN": "",
+                                  "swiftCode": ""
+                              }
+                          ]
+                      }
+                  },
+                  {
+                      "clientReference": "", 
+                      "isPrimary": false,
+                      "businessName": "{{ $randFullName() }}",
+                      "companyType": "OTHER",
+                      "companyAddress": [
+                          {
+                              "standardised": {
+                                  "buildingNumber": "",
+                                  "entrance": "",
+                                  "flat": "",
+                                  "houseName": "",
+                                  "houseNumber": "",
+                                  "street": "",
+                                  "city": "",
+                                  "cityDistrict": "",
+                                  "suburb": "",
+                                  "state": "",
+                                  "stateDistrict": "",
+                                  "postcode": "",
+                                  "poBox": "",
+                                  "country": ""
+                              }
+                          }
+                      ],
+                      "finance": {
+                          "bankAccount": [
+                              {
+                                  "name": "{{ $randFullName() }}",
+                                  "sortCode": "",
+                                  "accountNumber": "",
+                                  "IBAN": "",
+                                  "swiftCode": ""
+                              }
+                          ]
+                      }
+                  }
+              ],
+              "financialAccount": {
+                  "financialTransaction": [
+                      {
+                          "clientReference": "",
+                          "bicCode": "GAZPRUMM",
+                          "sortCode": "000000",
+                          "accountNumber": "000000000",
+                          "accountHolder": "Load Test", 
+                          "IBAN": "123456789",
+                          "creditOrDebit":"{{ transaction_type }}",
+                          "currencyCode": "EUR",
+                          "paymentType": "{{ payment_type }}",
+                          "countryOfTransaction": "{{ country_of_transaction }}",
+                          "amount": "{{ $randAmount() }}",
+                          "paymentReference": "Load Test",
+                          "effectiveDateTime": "2023-11-23 10:03:15",
+                          "externalRuleOutcomes": [
+                              {
+                                  "code": "Risk Attribute",
+                                  "outcome": "PPP_Client9"
+                              },
+                              {
+                                  "code": "Party Type",
+                                  "outcome": "{{ party_type }}" 
+                              },
+                              {
+                                  "code": "GBR",
+                                  "description": "Original Currency",
+                                  "outcome": "{{ $randAmount() }}"
+                              }
+                          ]
+                      }
+                  ]
+              }
+          }
+

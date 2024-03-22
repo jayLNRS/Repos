@@ -1,0 +1,92 @@
+name: Artillery Template
+run-name: ${{ github.actor }} initiated a Artillery performance test
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+      config_file_name:
+        required: true
+        type: string
+      warm_up_duration:
+        type: string
+      warm_up_initial_rate:
+        required: true
+        type: string
+      warm_up_total_rate:
+        required: true
+        type: string
+      spike_duration:
+        required: true
+        type: string
+      spike_initial_rate:
+        required: true
+        type: string
+      spike_total_rate:
+        required: true
+        type: string
+env:
+  CHANNEL: "performance-testing"
+  PIPELINE: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+jobs:
+  start-runner:
+    uses: ./.github/workflows/start_runner.yml
+  artillery-test:
+    needs: start-runner
+    runs-on: [self-hosted, rn-performance]
+    container: 225237029829.dkr.ecr.eu-west-2.amazonaws.com/trunarrative/alpine:infra
+    steps:
+      - uses: actions/checkout@v4
+      - uses: LexisNexis-RBA/rn-sre-cicd/assume_role@v1
+      - uses: LexisNexis-RBA/rn-sre-cicd/ppslack@v1
+      - name: Execute
+        shell: bash
+        run: |
+          source assume_role pp
+          export AUTHORIZATION_CODE="$(aws secretsmanager get-secret-value --secret-id devops/performance_testing_token --query SecretString --output text)"
+          source assume_role -u
+          artillery run \
+          --config artillery_config.yml \
+          --overrides '{
+              "config":{
+                  "phases":[
+                      {
+                          "duration":${{ inputs.warm_up_duration }},
+                          "arrivalRate":${{ inputs.warm_up_initial_rate }},
+                          "rampTo":${{ inputs.warm_up_total_rate }},
+                          "name":"Warm up phase"
+                      },
+                      {
+                          "duration":${{ inputs.spike_duration }},
+                          "arrivalRate":${{ inputs.spike_initial_rate }},
+                          "rampTo":${{ inputs.spike_total_rate }},
+                          "name":"Spike phase"
+                      }
+                  ],
+                  "defaults":{
+                      "headers":{
+                          "Authorization":"Basic '"$AUTHORIZATION_CODE"'"
+                      }
+                  }
+              }
+          }' \
+          tests/performance/${{ inputs.config_file_name }}.yml \
+          | tee out.txt
+          echo "Environment          : ${{ inputs.environment }}" | tee -a out.txt
+          echo "Config file          : ${{ inputs.config_file_name }}.yml" | tee -a out.txt
+          echo "Warm Up Duration     : ${{ inputs.warm_up_duration }}" | tee -a out.txt
+          echo "Warm Up Initial Rate : ${{ inputs.warm_up_initial_rate }}" | tee -a out.txt
+          echo "Warm Up Total Rate   : ${{ inputs.warm_up_total_rate }}" | tee -a out.txt
+          echo "Ramp Up Duration     : ${{ inputs.spike_duration }}" | tee -a out.txt
+          echo "Ramp Up Initial Rate : ${{ inputs.spike_initial_rate }}" | tee -a out.txt
+          echo "Ramp Up Total Rate   : ${{ inputs.spike_total_rate }}" | tee -a out.txt
+      - name: Get job id
+        run: |
+          jid=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}/jobs | jq .jobs[-1].id)
+          url=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${{ github.repository }}/actions/jobs/$jid | jq .html_url)
+          echo "URL=$url" >> $GITHUB_ENV
+      - name: Post to Slack
+        run: |
+          tail -n 38 out.txt | ppslack -f "${{ github.actor }}" -t "performance-testing" -Hs "[${{ inputs.environment }}] Performance Test by Artillery (YML: ${{ inputs.config_file_name }} <${{ env.PIPELINE }}|Pipeline>, <${{ env.URL }}|Job>)" || true
+
+

@@ -1,0 +1,47 @@
+name: Art Test - Siauliu Bankas Strategy
+run-name: ${{ github.actor }} initiated a Artillery performance test
+on:
+  workflow_dispatch:
+    inputs:
+      warm_up_duration:
+        required: true
+        type: string
+        description: "Warm up duration in seconds"
+        default: "60"
+      warm_up_initial_rate:
+        required: true
+        type: string
+        description: "Warm up Requests per second - Initial"
+        default: "1"
+      warm_up_total_rate:
+        required: true
+        type: string
+        description: "Warm up Requests per second - Ramp up to"
+        default: "3"
+      spike_duration:
+        required: true
+        type: string
+        description: "Spike phase duration in seconds"
+        default: "120"
+      spike_initial_rate:
+        required: true
+        type: string
+        description: "Spike phase Requests per second - Initial"
+        default: "4"
+      spike_total_rate:
+        required: true
+        type: string
+        description: "Spike phase Requests per second - Ramp up to"
+        default: "12"
+jobs:
+  test-flow:
+    uses: ./.github/workflows/artillery-template.yml
+    with:
+      environment: "pp"
+      config_file_name: "Siauliu_Bankas"
+      warm_up_duration: ${{ inputs.warm_up_duration }}
+      warm_up_initial_rate: ${{ inputs.warm_up_initial_rate }}
+      warm_up_total_rate: ${{ inputs.warm_up_total_rate}}
+      spike_duration: ${{ inputs.spike_duration }}
+      spike_initial_rate: ${{ inputs.spike_initial_rate }}
+      spike_total_rate: ${{ inputs.spike_total_rate }}

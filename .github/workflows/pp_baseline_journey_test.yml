@@ -1,4 +1,4 @@
-name: Test Journey - Baseline
+name: JM Test - PP Baseline Journey
 run-name: ${{ github.actor }} initiated a JMeter performance test
 on:
   workflow_dispatch:
