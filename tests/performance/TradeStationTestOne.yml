@@ -1,0 +1,214 @@
+scenarios:
+  - name: "Test Tradestation Strategy Test one in PP"
+    flow:
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1547,
+                "accountReference": "111115",
+                "application": {
+                },
+                    "financialAccount": {
+                    "clientReference": "11114",
+                    "accountNumber": "111115",
+                    "productName": "Equities",
+                    "productCode": "Individual",
+                    "financialTransaction": [
+                        {
+                            "clientReference": "11114",
+                            "sortCode": "000000",
+                            "accountNumber": "{{ $randAccount() }}",
+                            "accountHolder": "Donald Trump",
+                            "effectiveDateTime": "2023-08-27 00:00:00",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "USD",
+                            "paymentType": "ACH",
+                            "paymentSubtype": "{{ achPaymentSubType }}",
+                            "countryOfTransaction": "USA",
+                            "amount": "{{ $randAmount() }}",
+                            "balance": "{{ $randAmount() }}",
+                            "paymentReference": "{{ $randCatchPhrase() }}",
+                            "thirdParty": "Donal Trump",
+                            "thirdPartyId": "Bank of America",
+                            "IBAN": "Bank of America12345"
+                        }
+                    ]
+                }
+            }
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1547,
+                "accountReference": "111115",
+                "application": {
+                },
+                    "financialAccount": {
+                    "clientReference": "11114",
+                    "accountNumber": "111115",
+                    "productName": "Equities",
+                    "productCode": "Individual",
+                    "financialTransaction": [
+                        {
+                            "clientReference": "11114",
+                            "sortCode": "000000",
+                            "accountNumber": "{{ $randAccount() }}",
+                            "accountHolder": "Donald Trump",
+                            "effectiveDateTime": "2023-08-27 00:00:00",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "USD",
+                            "paymentType": "ACAT",
+                            "paymentSubtype": "{{ acatPaymentSubType }}",
+                            "countryOfTransaction": "USA",
+                            "amount": "{{ $randAmount() }}",
+                            "balance": "{{ $randAmount() }}",
+                            "paymentReference": "{{ $randCatchPhrase() }}",
+                            "thirdParty": "Donal Trump",
+                            "thirdPartyId": "Bank of America",
+                            "IBAN": "Bank of America12345"
+                        }
+                    ]
+                }
+            }
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1547,
+                "accountReference": "111115",
+                "application": {
+                },
+                    "financialAccount": {
+                    "clientReference": "11114",
+                    "accountNumber": "111115",
+                    "productName": "Equities",
+                    "productCode": "Individual",
+                    "financialTransaction": [
+                        {
+                            "clientReference": "11114",
+                            "sortCode": "000000",
+                            "accountNumber": "{{ $randAccount() }}",
+                            "accountHolder": "Donald Trump",
+                            "effectiveDateTime": "2023-08-27 00:00:00",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "USD",
+                            "paymentType": "{{ tsPaymentType }}",
+                            "paymentSubtype": "",
+                            "countryOfTransaction": "USA",
+                            "amount": "{{ $randAmount() }}",
+                            "balance": "{{ $randAmount() }}",
+                            "paymentReference": "{{ $randCatchPhrase() }}",
+                            "thirdParty": "Donal Trump",
+                            "thirdPartyId": "Bank of America",
+                            "IBAN": "Bank of America12345"
+                        }
+                    ]
+                }
+            }
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1547,
+                "accountReference": "111115",
+                "application": {
+                },
+                    "financialAccount": {
+                    "clientReference": "11114",
+                    "accountNumber": "111115",
+                    "productName": "Equities",
+                    "productCode": "Individual",
+                    "financialTransaction": [
+                        {
+                            "clientReference": "11114",
+                            "sortCode": "000000",
+                            "accountNumber": "{{ $randAccount() }}",
+                            "accountHolder": "Donald Trump",
+                            "effectiveDateTime": "2023-08-27 00:00:00",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "USD",
+                            "paymentType": "Wire",
+                            "paymentSubtype": "{{ wirePaymentSubType }}",
+                            "countryOfTransaction": "USA",
+                            "amount": "{{ $randAmount() }}",
+                            "balance": "{{ $randAmount() }}",
+                            "paymentReference": "{{ $randCatchPhrase() }}",
+                            "thirdParty": "Donal Trump",
+                            "thirdPartyId": "Bank of America",
+                            "IBAN": "Bank of America12345"
+                        }
+                    ]
+                }
+            }
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1547,
+                "accountReference": "111115",
+                "application": {
+                },
+                    "financialAccount": {
+                    "clientReference": "11114",
+                    "accountNumber": "111115",
+                    "productName": "Equities",
+                    "productCode": "Individual",
+                    "financialTransaction": [
+                        {
+                            "clientReference": "11114",
+                            "sortCode": "000000",
+                            "accountNumber": "{{ $randAccount() }}",
+                            "accountHolder": "Donald Trump",
+                            "effectiveDateTime": "2023-08-27 00:00:00",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "USD",
+                            "paymentType": "Crypto Transfers",
+                            "paymentSubtype": "{{ cryptoPaymentSubType }}",
+                            "countryOfTransaction": "USA",
+                            "amount": "{{ $randAmount() }}",
+                            "balance": "{{ $randAmount() }}",
+                            "paymentReference": "{{ $randCatchPhrase() }}",
+                            "thirdParty": "Donal Trump",
+                            "thirdPartyId": "Bank of America",
+                            "IBAN": "Bank of America12345"
+                        }
+                    ]
+                }
+            }
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1547,
+                "accountReference": "111115",
+                "application": {
+                },
+                    "financialAccount": {
+                    "clientReference": "11114",
+                    "accountNumber": "111115",
+                    "productName": "Equities",
+                    "productCode": "Individual",
+                    "financialTransaction": [
+                        {
+                            "clientReference": "11114",
+                            "sortCode": "000000",
+                            "accountNumber": "{{ $randAccount() }}",
+                            "accountHolder": "Donald Trump",
+                            "effectiveDateTime": "2023-08-27 00:00:00",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "USD",
+                            "paymentType": "Customer Contact",
+                            "paymentSubtype": "{{ customerPaymentSubType }}",
+                            "countryOfTransaction": "USA",
+                            "amount": 0,
+                            "balance": "",
+                            "paymentReference": "{{ $randCatchPhrase() }}",
+                            "thirdParty": "Donal Trump",
+                            "thirdPartyId": "Bank of America",
+                            "IBAN": "Bank of America12345"
+                        }
+                    ]
+                }
+            }
+

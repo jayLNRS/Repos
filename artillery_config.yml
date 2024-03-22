@@ -18,15 +18,19 @@ config:
       Authorization: "Basic AUTHORIZATION_CODE"
   
   variables:
+    # Common vars
     transaction_type: ["CREDIT", "DEBIT"]
     risk_level: ["1", "2", "3", "4", "5"]
     payment_type: ["TARGET", "SEPA", "MT103", "SEPA-INSTANT"]
-    payment_type_afrasia: ["PFM", "CQP", "CHD", "PFC", "CHW", "SAL", "ADJ", "MSC", "MST", "CAB", "REP", "RER", "OCD", "OCE", "IBP", "BCI", "SEP", "BWT", "CAL", "AAT", "SAT", "OGT", "ADJ", "MSC", "MST", "CAB", "REP", "RER"]
-    payment_sub_type: ["HIGH", "TRUST_RESIDENT", "FOUNDATION_RESIDENT"]
     country_of_transaction: ["USA", "IND", "GBR", "BRA", "JAP"]
-    country_of_transaction_afrasia: ["ALB", "DZA", "AGO", "ARM", "AZE", "BHS", "BGD", "BRB", "BLR", "BMU", "BOL", "BIH", "BDI", "KHM", "CYM", "CAF", "CHN", "CXR", "CCK", "COL", "COG", "COD", "CUB", "ECU", "SLV", "ERI", "GIN", "GNB"]
     party_type: ["IR", "IN", "CR", "CN"]
-    resident_type: ["ResidentIndividual", "ResidentCorporate", "NonResidentCorporate"]
-    exempt: ["EXEMPT", "NOEXEMPT"]
-    peptype: ["PEPIndividual", "PEPCorporate", "PEPAssociation", "PEPTradingPartner", "DIFCResident"]
+
+    # TradeStation vars
+    achPaymentSubType: ["ACH In", "ACH Out"]
+    acatPaymentSubType: ["ACAT In", "ACAT Out"]
+    tsPaymentType: ["Journal", "Check Deposit"]
+    wirePaymentSubType: ["Wire In", "Wire Out"]
+    cryptoPaymentSubType: ["Transfer in", "Transfer out"]
+    customerPaymentSubType: ["Name", "E-mail", "Phone Number", "Address"]
+    achrPaymentSubType: ["ACH In", "ACH Out", "R01", "R03", "R05", "R07", "R10", "R11", "R16"]
 
