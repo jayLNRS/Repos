@@ -6,17 +6,17 @@ scenarios:
           json:
             {
                 "accountStrategyId": 1547,
-                "accountReference": "111115",
+                "accountReference": "111116",
                 "application": {
                 },
                     "financialAccount": {
-                    "clientReference": "11114",
-                    "accountNumber": "111115",
+                    "clientReference": "11116",
+                    "accountNumber": "111116",
                     "productName": "Equities",
                     "productCode": "Individual",
                     "financialTransaction": [
                         {
-                            "clientReference": "11114",
+                            "clientReference": "11116",
                             "sortCode": "000000",
                             "accountNumber": "{{ $randAccount() }}",
                             "accountHolder": "Donald Trump",
@@ -41,17 +41,17 @@ scenarios:
           json:
             {
                 "accountStrategyId": 1547,
-                "accountReference": "111115",
+                "accountReference": "111116",
                 "application": {
                 },
                     "financialAccount": {
-                    "clientReference": "11114",
-                    "accountNumber": "111115",
+                    "clientReference": "11116",
+                    "accountNumber": "111116",
                     "productName": "Equities",
                     "productCode": "Individual",
                     "financialTransaction": [
                         {
-                            "clientReference": "11114",
+                            "clientReference": "11116",
                             "sortCode": "000000",
                             "accountNumber": "{{ $randAccount() }}",
                             "accountHolder": "Donald Trump",
