@@ -50,9 +50,13 @@ jobs:
           psql -q -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -v ON_ERROR_STOP=1 -v org_id="${{ inputs.org_id }}" -f performance_data_clean.sql
           vacuumdb -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -z -j 4 -e
           echo "END=$(date +%s)" >> $GITHUB_ENV
+      - name: Get job id
+        run: |
           jid=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}/jobs | jq .jobs[-1].id)
           url=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${{ github.repository }}/actions/jobs/$jid | jq .html_url)
           echo "URL=$url" >> $GITHUB_ENV
+      - name: Post to Slack
+        run: |
           echo "[${{ inputs.environment }}] BE DB Cleaned and Vacuumed in $(date -d@$((${{ env.END }}-${{ env.START }})) -u +%H:%M:%S) <${{ env.PIPELINE  }}|Pipeline>, <${{ env.URL }}|Job>" | ppslack -f "${{ github.actor }}" -t "${{ env.CHANNEL }}"
   stop-runner:
     needs: cleanup
