@@ -8,8 +8,8 @@ on:
         type: choice
         description: "Config File Name"
         options:
-          - TradeStationTestOne
-          - TradeStationTestTwo
+          - TradeStationAccountCreation
+          - TradeStationOngoingTransactions
       warm_up_duration:
         required: true
         type: string

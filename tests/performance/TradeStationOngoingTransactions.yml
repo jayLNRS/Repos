@@ -1,0 +1,39 @@
+scenarios:
+  - name: "Test Tradestation Ongoing Transaction in PP"
+    flow:
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1547,
+                "accountReference": "{{ accountReference }}",
+                "application": {
+                },
+                    "financialAccount": {
+                    "clientReference": "{{ clientReference }}",
+                    "accountNumber": "{{ accountReference }}",
+                    "productName": "Equities",
+                    "productCode": "Individual",
+                    "financialTransaction": [
+                        {
+                            "clientReference": "{{ clientReference }}",
+                            "sortCode": "000000",
+                            "accountNumber": "56879N6H69712345",
+                            "accountHolder": "Donald Trump",
+                            "effectiveDateTime": "{{ effectiveDateTime }} 00:00:00",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "USD",
+                            "paymentType": "{{ paymentType }}",
+                            "paymentSubtype": "{{ paymentSubtype }}",
+                            "countryOfTransaction": "USA",
+                            "amount": "{{ $randAmount() }}",
+                            "balance": "",
+                            "paymentReference": "",
+                            "thirdParty": "Donal Trump",
+                            "thirdPartyId": "{{ $randCatchPhrase() }}",
+                            "IBAN": "BankofAmerica{{ IBAN }}"
+                        }
+                    ]
+                }
+            }
+

@@ -11,12 +11,16 @@ config:
       arrivalRate: 3
       rampTo: 4
       name: Spike phase
-
   defaults:
     headers:
       Content-Type: "application/json"
       Authorization: "Basic AUTHORIZATION_CODE"
-  
+  payload:
+    - path: "../../data/sample-data.csv"
+      fields:
+        - clientReference
+        - accountReference
+        - effectiveDateTime
   variables:
     # Common vars
     transaction_type: ["CREDIT", "DEBIT"]
@@ -24,13 +28,4 @@ config:
     payment_type: ["TARGET", "SEPA", "MT103", "SEPA-INSTANT"]
     country_of_transaction: ["USA", "IND", "GBR", "BRA", "JAP"]
     party_type: ["IR", "IN", "CR", "CN"]
-
-    # TradeStation vars
-    achPaymentSubType: ["ACH In", "ACH Out"]
-    acatPaymentSubType: ["ACAT In", "ACAT Out"]
-    tsPaymentType: ["Journal", "Check Deposit"]
-    wirePaymentSubType: ["Wire In", "Wire Out"]
-    cryptoPaymentSubType: ["Transfer in", "Transfer out"]
-    customerPaymentSubType: ["Name", "E-mail", "Phone Number", "Address"]
-    achrPaymentSubType: ["ACH In", "ACH Out", "R01", "R03", "R05", "R07", "R10", "R11", "R16"]
-
+    # Project specif vars
