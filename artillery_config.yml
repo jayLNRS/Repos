@@ -29,3 +29,5 @@ config:
     country_of_transaction: ["USA", "IND", "GBR", "BRA", "JAP"]
     party_type: ["IR", "IN", "CR", "CN"]
     # Project specif vars
+    #Siauliu Bankas
+    client: ["PPP_Client9", "  " ]

@@ -107,7 +107,7 @@ scenarios:
                           "externalRuleOutcomes": [
                               {
                                   "code": "Risk Attribute",
-                                  "outcome": "PPP_Client9"
+                                  "outcome": "{{ client }}"
                               },
                               {
                                   "code": "Party Type",
