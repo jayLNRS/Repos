@@ -1,5 +1,7 @@
 config:
   target: "https://pp.trunarrative.cloud"
+  http:
+    timeout: 60
   plugins:
     fake-data: {}
   phases:
