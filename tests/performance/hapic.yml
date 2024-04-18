@@ -1,0 +1,82 @@
+scenarios:
+  - name: "Test Hapic Strategy in PP"
+    flow:
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1579,
+                "accountReference": "", 
+                "application": {
+                    "clientApplicationPurpose": "{{ $randCatchPhrase() }}"
+                },
+                "person": [
+                    {
+                        "role": "Applicant",
+                        "isPrimary": true,
+                        "clientReference": "{{ $randBic() }}",
+                        "dateOfBirth": "",
+                        "emailAddress": "{{ $randEmail() }}",
+                        "firstName": "{{ $randWord() }}",
+                        "middleNames": "",
+                        "lastName": "{{ $randWord() }}",
+                        "residentialAddress": [
+                            {
+                                "addressLine1": "{{ $randStreetAddress() }}",
+                                "addressLine2": "",
+                                "addressLine5": "",
+                                "zipPostcode": "{{ $randZipCode() }}",
+                                "country": "GBR"
+                            }
+                        ]
+                    }
+                ],
+                "financialAccount": {
+                    "financialTransaction": [
+                        {
+                            "clientReference": "",
+                            "sortCode": "101010",
+                            "accountNumber": "10000002",
+                            "accountHolder": "James May",
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "{{ currencyCode }}",
+                            "paymentType": "",
+                            "thirdPartyID": "{{ thirdPartyID }}",
+                            "paymentSubtype": "",
+                            "paymentReference": "",
+                            "amount": "{{ $randAmount() }}",
+                            "balance": 10,
+                            "IBAN": "AL35202111090000000001234567",
+                            "effectiveDateTime": "2024-04-05",
+                            "countryOfTransaction": "GBR",
+                            "externalRuleOutcomes": [
+                                {
+                                    "code": "Limit",
+                                    "outcome": "{{ $randNumber() }}"
+                                },
+                                {
+                                    "code": "CounterPartyRisk", 
+                                    "outcome": "{{ counter_party_risk }}"
+                                },
+                                {
+                                    "code": "FirstTransaction",
+                                    "outcome": "{{ $randBoolean() }}"
+                                },
+                                {
+                                    "code": "PersonRisk",
+                                    "outcome": "{{ person_risk }}" 
+                                },
+                                {
+                                    "code": "Keyword",
+                                    "outcome": "{{ external_rule_outcome_keyword }}"
+                                },
+                                {
+                                    "code": "FirstPayment",
+                                    "outcome": "{{ $randBoolean() }}"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+

@@ -3,7 +3,13 @@ config:
   http:
     timeout: 60
   plugins:
-    fake-data: {}
+    fake-data:
+      randAmount:
+        min: 250000
+        max: 1000000
+      randNumber:
+        min: 1
+        max: 9
   phases:
     - duration: 5
       arrivalRate: 1
@@ -18,11 +24,10 @@ config:
       Content-Type: "application/json"
       Authorization: "Basic AUTHORIZATION_CODE"
   payload:
-    - path: "../../data/sample-data.csv"
+    - path: "../../data/hapic.csv"
       fields:
-        - clientReference
-        - accountReference
-        - effectiveDateTime
+        - currencyCode
+        - thirdPartyID
   variables:
     # Common vars
     transaction_type: ["CREDIT", "DEBIT"]
@@ -30,6 +35,9 @@ config:
     payment_type: ["TARGET", "SEPA", "MT103", "SEPA-INSTANT"]
     country_of_transaction: ["USA", "IND", "GBR", "BRA", "JAP"]
     party_type: ["IR", "IN", "CR", "CN"]
+    external_rule_outcome_keyword: ["guns", "alcohol", "golfing", "skydiving"]
+    counter_party_risk: ["HIGHRISK", "ODDRISK", "INVERTEDRISK", "TRIPLERISK"]
+    person_risk: ["HIGHRISK", "TEENYRISK", "PINKRISK", "PROPERRISK"]
     # Project specif vars
     #Siauliu Bankas
     client: ["PPP_Client9", "  " ]
