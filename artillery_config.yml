@@ -11,10 +11,6 @@ config:
         min: 1
         max: 9
   phases:
-    - duration: 5
-      arrivalRate: 1
-      rampTo: 2
-      name: Warm up phase
     - duration: 12
       arrivalRate: 3
       rampTo: 4
