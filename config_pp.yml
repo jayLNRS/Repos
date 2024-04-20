@@ -10,10 +10,10 @@ config:
       Content-Type: "application/json"
       Authorization: "Basic {{ $env.TOKEN }}"
   ensure:
-    p95: 2000
-    p99: 3000
-    max: 5000
     maxErrorRate: 0
     thresholds:
-      - http.response_time.p99: 3000
+      - http.response_time.min: 1000
+      - http.response_time.mean: 2000
       - http.response_time.p95: 2000
+      - http.response_time.p99: 3000
+      - http.response_time.max: 5000
