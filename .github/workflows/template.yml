@@ -53,11 +53,6 @@ jobs:
           tests/performance/${{ inputs.test_file }} \
           | tee out.txt \
           || true
-          echo "Environment:         ${{ inputs.env }}" | tee -a out.txt
-          echo "Config file:         config_${{ inputs.env }}.yml" | tee -a out.txt
-          echo "Test file:           ${{ inputs.test_file }}" | tee -a out.txt
-          echo "Duration:            ${{ inputs.duration }}" | tee -a out.txt
-          echo "Requests per second: ${{ inputs.arrival_rate }}" | tee -a out.txt
       - name: Get job id
         run: |
           jid=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ github.run_attempt }}/jobs | jq .jobs[-1].id)
@@ -65,4 +60,4 @@ jobs:
           echo "URL=$url" >> $GITHUB_ENV
       - name: Post to Slack
         run: |
-          awk '/All VUs finished/,0' out.txt | ppslack -f "${{ github.actor }}" -t "performance-testing" -Hs "[${{ inputs.env }}] Performance Test ${{ inputs.test_file }} Duration: ${{ inputs.duration }} RPS: ${{ inputs.arrival_rate }} (<${{ env.PIPELINE }}|Pipeline>, <${{ env.URL }}|Job>)" || true
+          awk '/All VUs finished/,0' out.txt | ppslack -f "${{ github.actor }}" -t "performance-testing" -Hs "[${{ inputs.env }}] Performance Test: ${{ inputs.test_file }} Duration: ${{ inputs.duration }} RPS: ${{ inputs.arrival_rate }} (<${{ env.PIPELINE }}|Pipeline>, <${{ env.URL }}|Job>)" || true
