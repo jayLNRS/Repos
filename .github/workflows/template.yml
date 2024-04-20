@@ -43,9 +43,9 @@ jobs:
               "config":{
                 "phases":[
                   {
+                    "name":"${{ inputs.duration }}s_${{ inputs.arrival_rate }}rps",
                     "duration":${{ inputs.duration }},
-                    "arrivalRate":${{ inputs.arrival_rate }},
-                    "name":"${{ inputs.arrival_rate }}rps"
+                    "arrivalRate":${{ inputs.arrival_rate }}
                   }
                 ]
               }

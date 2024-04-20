@@ -1,35 +1,8 @@
 config:
   phases:
-    - name: 1rps
+    - name: 300s_1rps
       duration: 300
       arrivalRate: 1
-    - name: 5rps
-      duration: 300
-      arrivalRate: 5
-    - name: 10rps
-      duration: 300
-      arrivalRate: 10
-    - name: 15rps
-      duration: 300
-      arrivalRate: 15
-    - name: 20rps
-      duration: 300
-      arrivalRate: 20
-    - name: 25rps
-      duration: 300
-      arrivalRate: 25
-    - name: 30rps
-      duration: 300
-      arrivalRate: 30
-    - name: 35rps
-      duration: 300
-      arrivalRate: 35
-    - name: 40rps
-      duration: 300
-      arrivalRate: 40
-    - name: 50rps
-      duration: 300
-      arrivalRate: 50
   variables:
     transaction_type: ["CREDIT", "DEBIT"]
     risk_level: ["1", "2", "3", "4", "5"]
