@@ -1,5 +1,5 @@
 name: Performance Test
-run-name: "Performance Test ${{ inputs.duration }} ${{ inputs.arrival_rate }}"
+run-name: "Performance Test ${{ inputs.test_file }} Duration: ${{ inputs.duration }} Arrival rate: ${{ inputs.arrival_rate }}"
 
 on:
   workflow_dispatch:

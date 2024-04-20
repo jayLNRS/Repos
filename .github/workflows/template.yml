@@ -1,5 +1,4 @@
-name: Performance Testing Template
-run-name: ${{ github.actor }} initiated a Artillery performance test
+name: Performance Test Template
 
 on:
   workflow_call:
@@ -46,21 +45,16 @@ jobs:
                   {
                     "duration":${{ inputs.duration }},
                     "arrivalRate":${{ inputs.arrival_rate }},
-                    "name":"Performance test"
+                    "name":"${{ inputs.arrival_rate }}tps"
                   }
-                ],
-                "defaults":{
-                  "headers":{
-                    "Authorization":"Basic '"$AUTHORIZATION_CODE"'"
-                  }
-                }
+                ]
               }
           }' \
-          tests/performance/${{ inputs.test_file }}.yml \
+          tests/performance/${{ inputs.test_file }} \
           | tee out.txt
           echo "Environment   : ${{ inputs.env }}" | tee -a out.txt
           echo "Config file   : config_${{ inputs.env }}.yml" | tee -a out.txt
-          echo "Test file     : ${{ inputs.test_file }}.yml" | tee -a out.txt
+          echo "Test file     : ${{ inputs.test_file }}" | tee -a out.txt
           echo "Duration      : ${{ inputs.duration }}" | tee -a out.txt
           echo "Arrival rate  : ${{ inputs.arrival_rate }}" | tee -a out.txt
       - name: Get job id
