@@ -1,5 +1,5 @@
 name: Performance Test
-run-name: "Performance Test ${{ inputs.test_file }} Duration: ${{ inputs.duration }} Arrival rate: ${{ inputs.arrival_rate }}"
+run-name: "Performance Test ${{ inputs.test_file }} Duration: ${{ inputs.duration }} RPS: ${{ inputs.arrival_rate }}"
 
 on:
   workflow_dispatch:
@@ -14,15 +14,18 @@ on:
         description: "Test file"
         options:
           - Siauliu_Bankas.yml
+          - TradeStationAccountCreation.yml
+          - TradeStationOngoingTransactions.yml
+          - hapic.yml
       duration:
         required: true
         type: string
-        description: "Duration"
+        description: "Duration (seconds)"
         default: "300"
       arrival_rate:
         required: true
         type: string
-        description: "Arrival rate"
+        description: "Requests per second"
         default: "1"
 
 jobs:
