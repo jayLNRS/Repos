@@ -37,7 +37,7 @@ jobs:
           source assume_role pp
           export AUTHORIZATION_CODE="$(aws secretsmanager get-secret-value --secret-id devops/performance_testing_token --query SecretString --output text)"
           source assume_role -u
-          {artillery run \
+          artillery run \
             --config "config_${{ inputs.env }}.yml" \
             --overrides '{
               "config":{
@@ -50,8 +50,9 @@ jobs:
                 ]
               }
           }' \
-          tests/performance/${{ inputs.test_file }} || true} \
-          | tee out.txt
+          tests/performance/${{ inputs.test_file }} \
+          | tee out.txt \
+          || true
           echo "Environment:         ${{ inputs.env }}" | tee -a out.txt
           echo "Config file:         config_${{ inputs.env }}.yml" | tee -a out.txt
           echo "Test file:           ${{ inputs.test_file }}" | tee -a out.txt
