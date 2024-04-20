@@ -1,0 +1,19 @@
+config:
+  target: "https://pp.trunarrative.cloud"
+  http:
+    timeout: 60
+  plugins:
+    ensure: {}
+    fake-data: {}
+  defaults:
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Basic {{ $env.TOKEN }}"
+  ensure:
+    p95: 2000
+    p99: 3000
+    max: 5000
+    maxErrorRate: 0
+    thresholds:
+      - http.response_time.p99: 3000
+      - http.response_time.p95: 2000

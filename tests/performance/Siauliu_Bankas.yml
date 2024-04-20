@@ -1,5 +1,45 @@
+config:
+  phases:
+    - name: 1ps
+      duration: 300
+      arrivalRate: 1
+    - name: 5ps
+      duration: 300
+      arrivalRate: 5
+    - name: 10ps
+      duration: 300
+      arrivalRate: 10
+    - name: 15ps
+      duration: 300
+      arrivalRate: 15
+    - name: 20ps
+      duration: 300
+      arrivalRate: 20
+    - name: 25ps
+      duration: 300
+      arrivalRate: 25
+    - name: 30ps
+      duration: 300
+      arrivalRate: 30
+    - name: 35ps
+      duration: 300
+      arrivalRate: 35
+    - name: 40ps
+      duration: 300
+      arrivalRate: 40
+    - name: 50ps
+      duration: 300
+      arrivalRate: 50
+  variables:
+    transaction_type: ["CREDIT", "DEBIT"]
+    risk_level: ["1", "2", "3", "4", "5"]
+    payment_type: ["TARGET", "SEPA", "MT103", "SEPA-INSTANT"]
+    country_of_transaction: ["USA", "IND", "GBR", "BRA", "JAP"]
+    party_type: ["IR", "IN", "CR", "CN"]
+    client: ["PPP_Client9", "  "]
+
 scenarios:
-  - name: "Test Siauliu Bankas Strategy in PP"
+  - name: Siauliu Bankas RunStrategy
     flow:
       - post:
           url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
@@ -8,119 +48,118 @@ scenarios:
               "accountStrategyId": 1522,
               "accountReference": "",
               "application": {
-                  "clientApplicationPurpose": "PAYMENTSCREENING",
-                  "clientRiskLevel": "{{ risk_level }}",
-                  "customerReference": "{{ $randCatchPhrase() }}"
+                "clientApplicationPurpose": "PAYMENTSCREENING",
+                "clientRiskLevel": "{{ risk_level }}",
+                "customerReference": "{{ $randCatchPhrase() }}"
               },
               "company": [
-                  {
-                      "clientReference": "",
-                      "isPrimary": true,
-                      "businessName": "{{ $randFullName() }}",
-                      "companyType": "OTHER",
-                      "companyAddress": [
-                          {
-                              "standardised": {
-                                  "buildingNumber": "",
-                                  "entrance": "",
-                                  "flat": "",
-                                  "houseName": "",
-                                  "houseNumber": "",
-                                  "street": "",
-                                  "city": "",
-                                  "cityDistrict": "",
-                                  "suburb": "",
-                                  "state": "",
-                                  "stateDistrict": "",
-                                  "postcode": "",
-                                  "poBox": "",
-                                  "country": ""
-                              }
-                          }
-                      ],
-                      "finance": {
-                          "bankAccount": [
-                              {
-                                  "name": "{{ $randFullName() }}",
-                                  "sortCode": "",
-                                  "accountNumber": "",
-                                  "IBAN": "",
-                                  "swiftCode": ""
-                              }
-                          ]
+                {
+                  "clientReference": "",
+                  "isPrimary": true,
+                  "businessName": "{{ $randFullName() }}",
+                  "companyType": "OTHER",
+                  "companyAddress": [
+                    {
+                      "standardised": {
+                        "buildingNumber": "",
+                        "entrance": "",
+                        "flat": "",
+                        "houseName": "",
+                        "houseNumber": "",
+                        "street": "",
+                        "city": "",
+                        "cityDistrict": "",
+                        "suburb": "",
+                        "state": "",
+                        "stateDistrict": "",
+                        "postcode": "",
+                        "poBox": "",
+                        "country": ""
                       }
-                  },
-                  {
-                      "clientReference": "", 
-                      "isPrimary": false,
-                      "businessName": "{{ $randFullName() }}",
-                      "companyType": "OTHER",
-                      "companyAddress": [
-                          {
-                              "standardised": {
-                                  "buildingNumber": "",
-                                  "entrance": "",
-                                  "flat": "",
-                                  "houseName": "",
-                                  "houseNumber": "",
-                                  "street": "",
-                                  "city": "",
-                                  "cityDistrict": "",
-                                  "suburb": "",
-                                  "state": "",
-                                  "stateDistrict": "",
-                                  "postcode": "",
-                                  "poBox": "",
-                                  "country": ""
-                              }
-                          }
-                      ],
-                      "finance": {
-                          "bankAccount": [
-                              {
-                                  "name": "{{ $randFullName() }}",
-                                  "sortCode": "",
-                                  "accountNumber": "",
-                                  "IBAN": "",
-                                  "swiftCode": ""
-                              }
-                          ]
+                    }
+                  ],
+                  "finance": {
+                    "bankAccount": [
+                      {
+                        "name": "{{ $randFullName() }}",
+                        "sortCode": "",
+                        "accountNumber": "",
+                        "IBAN": "",
+                        "swiftCode": ""
                       }
+                    ]
                   }
+                },
+                {
+                  "clientReference": "",
+                  "isPrimary": false,
+                  "businessName": "{{ $randFullName() }}",
+                  "companyType": "OTHER",
+                  "companyAddress": [
+                    {
+                      "standardised": {
+                        "buildingNumber": "",
+                        "entrance": "",
+                        "flat": "",
+                        "houseName": "",
+                        "houseNumber": "",
+                        "street": "",
+                        "city": "",
+                        "cityDistrict": "",
+                        "suburb": "",
+                        "state": "",
+                        "stateDistrict": "",
+                        "postcode": "",
+                        "poBox": "",
+                        "country": ""
+                      }
+                    }
+                  ],
+                  "finance": {
+                    "bankAccount": [
+                      {
+                        "name": "{{ $randFullName() }}",
+                        "sortCode": "",
+                        "accountNumber": "",
+                        "IBAN": "",
+                        "swiftCode": ""
+                      }
+                    ]
+                  }
+                }
               ],
               "financialAccount": {
-                  "financialTransaction": [
+                "financialTransaction": [
+                  {
+                    "clientReference": "",
+                    "bicCode": "GAZPRUMM",
+                    "sortCode": "000000",
+                    "accountNumber": "000000000",
+                    "accountHolder": "Load Test",
+                    "IBAN": "123456789",
+                    "creditOrDebit":"{{ transaction_type }}",
+                    "currencyCode": "EUR",
+                    "paymentType": "{{ payment_type }}",
+                    "countryOfTransaction": "{{ country_of_transaction }}",
+                    "amount": "{{ $randAmount() }}",
+                    "paymentReference": "Load Test",
+                    "effectiveDateTime": "2023-11-23 10:03:15",
+                    "externalRuleOutcomes": [
                       {
-                          "clientReference": "",
-                          "bicCode": "GAZPRUMM",
-                          "sortCode": "000000",
-                          "accountNumber": "000000000",
-                          "accountHolder": "Load Test", 
-                          "IBAN": "123456789",
-                          "creditOrDebit":"{{ transaction_type }}",
-                          "currencyCode": "EUR",
-                          "paymentType": "{{ payment_type }}",
-                          "countryOfTransaction": "{{ country_of_transaction }}",
-                          "amount": "{{ $randAmount() }}",
-                          "paymentReference": "Load Test",
-                          "effectiveDateTime": "2023-11-23 10:03:15",
-                          "externalRuleOutcomes": [
-                              {
-                                  "code": "Risk Attribute",
-                                  "outcome": "{{ client }}"
-                              },
-                              {
-                                  "code": "Party Type",
-                                  "outcome": "{{ party_type }}" 
-                              },
-                              {
-                                  "code": "GBR",
-                                  "description": "Original Currency",
-                                  "outcome": "{{ $randAmount() }}"
-                              }
-                          ]
+                        "code": "Risk Attribute",
+                        "outcome": "{{ client }}"
+                      },
+                      {
+                        "code": "Party Type",
+                        "outcome": "{{ party_type }}"
+                      },
+                      {
+                        "code": "GBR",
+                        "description": "Original Currency",
+                        "outcome": "{{ $randAmount() }}"
                       }
-                  ]
+                    ]
+                  }
+                ]
               }
-          }
-
+            }

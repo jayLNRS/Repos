@@ -1,0 +1,35 @@
+name: Performance Test
+run-name: "Performance Test ${{ inputs.duration }} ${{ inputs.arrival_rate }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        description: "Environment"
+        options:
+          - pp
+      test_file:
+        type: choice
+        description: "Test file"
+        options:
+          - Siauliu_Bankas.yml
+      duration:
+        required: true
+        type: string
+        description: "Duration"
+        default: "300"
+      arrival_rate:
+        required: true
+        type: string
+        description: "Arrival rate"
+        default: "1"
+
+jobs:
+  test:
+    uses: ./.github/workflows/template.yml
+    with:
+      env: ${{ inputs.env }}
+      test_file: ${{ inputs.test_file }}
+      duration: ${{ inputs.duration }}
+      arrival_rate: ${{ inputs.arrival_rate }}
