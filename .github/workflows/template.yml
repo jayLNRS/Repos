@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           source assume_role pp
-          export AUTHORIZATION_CODE="$(aws secretsmanager get-secret-value --secret-id devops/performance_testing_token --query SecretString --output text)"
+          export TOKEN="$(aws secretsmanager get-secret-value --secret-id devops/performance_testing_token --query SecretString --output text)"
           source assume_role -u
           artillery run \
             --config "config_${{ inputs.env }}.yml" \

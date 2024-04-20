@@ -8,7 +8,7 @@ config:
   defaults:
     headers:
       Content-Type: "application/json"
-      Authorization: "Basic {{ $env.AUTHORIZATION_CODE }}"
+      Authorization: "Basic {{ $env.TOKEN }}"
   ensure:
     p95: 2000
     p99: 3000
