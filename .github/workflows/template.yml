@@ -23,7 +23,7 @@ jobs:
   start-runner:
     uses: ./.github/workflows/start_runner.yml
 
-  artillery-test:
+  performance-test:
     needs: start-runner
     runs-on: [self-hosted, rn-performance]
     container: 225237029829.dkr.ecr.eu-west-2.amazonaws.com/trunarrative/alpine:infra
@@ -38,14 +38,14 @@ jobs:
           export AUTHORIZATION_CODE="$(aws secretsmanager get-secret-value --secret-id devops/performance_testing_token --query SecretString --output text)"
           source assume_role -u
           artillery run \
-            --config "config_{{ inputs.env }}.yml" \
+            --config "config_${{ inputs.env }}.yml" \
             --overrides '{
               "config":{
                 "phases":[
                   {
                     "duration":${{ inputs.duration }},
                     "arrivalRate":${{ inputs.arrival_rate }},
-                    "name":"${{ inputs.arrival_rate }}tps"
+                    "name":"${{ inputs.arrival_rate }}rps"
                   }
                 ]
               }

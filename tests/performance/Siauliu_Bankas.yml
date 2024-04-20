@@ -1,33 +1,33 @@
 config:
   phases:
-    - name: 1ps
+    - name: 1rps
       duration: 300
       arrivalRate: 1
-    - name: 5ps
+    - name: 5rps
       duration: 300
       arrivalRate: 5
-    - name: 10ps
+    - name: 10rps
       duration: 300
       arrivalRate: 10
-    - name: 15ps
+    - name: 15rps
       duration: 300
       arrivalRate: 15
-    - name: 20ps
+    - name: 20rps
       duration: 300
       arrivalRate: 20
-    - name: 25ps
+    - name: 25rps
       duration: 300
       arrivalRate: 25
-    - name: 30ps
+    - name: 30rps
       duration: 300
       arrivalRate: 30
-    - name: 35ps
+    - name: 35rps
       duration: 300
       arrivalRate: 35
-    - name: 40ps
+    - name: 40rps
       duration: 300
       arrivalRate: 40
-    - name: 50ps
+    - name: 50rps
       duration: 300
       arrivalRate: 50
   variables:
