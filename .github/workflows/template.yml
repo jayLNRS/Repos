@@ -60,4 +60,4 @@ jobs:
           echo "URL=$url" >> $GITHUB_ENV
       - name: Post to Slack
         run: |
-          awk '/All VUs finished/,0' out.txt | ppslack -f "${{ github.actor }}" -t "performance-testing" -Hs "[${{ inputs.env }}] Performance Test: ${{ inputs.test_file }} Duration: ${{ inputs.duration }} RPS: ${{ inputs.arrival_rate }} (<${{ env.PIPELINE }}|Pipeline>, <${{ env.URL }}|Job>)" || true
+          awk '/All VUs finished/,0' out.txt | ppslack -f "${{ github.actor }}" -t "performance-testing" -Hs "[${{ inputs.env }}] Performance Test: ${{ inputs.test_file }} Duration: ${{ inputs.duration }}s RPS: ${{ inputs.arrival_rate }} (<${{ env.PIPELINE }}|Pipeline>, <${{ env.URL }}|Job>)" || true
