@@ -13,10 +13,10 @@ on:
         type: choice
         description: "Test file"
         options:
-          - Siauliu_Bankas.yml
+          - HapicLtd.yml
+          - SiauliuBankas.yml
           - TradeStationAccountCreation.yml
           - TradeStationOngoingTransactions.yml
-          - hapic.yml
       duration:
         required: true
         type: string

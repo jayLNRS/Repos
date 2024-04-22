@@ -1,3 +1,21 @@
+config:
+  phases:
+    - name: 300s_1rps
+      duration: 300
+      arrivalRate: 1
+  variables:
+    transaction_type: ["CREDIT", "DEBIT"]
+    payment_type: ["TARGET", "SEPA", "MT103", "SEPA-INSTANT"]
+  payload:
+    - path: "../data/TradeStation.csv"
+      fields:
+        - clientReference
+        - accountReference
+        - effectiveDateTime
+        - iban
+        - paymentType
+        - paymentSubtype
+
 scenarios:
   - name: "Test Tradestation Account Creation in PP"
     flow:
@@ -55,7 +73,7 @@ scenarios:
                             "paymentReference": "",
                             "thirdParty": "Donal Trump",
                             "thirdPartyId": "Bank of America", 
-                            "IBAN": "BankofAmerica{{ IBAN }}"
+                            "IBAN": "BankofAmerica{{ iban }}"
                         }
                     ]
                 }

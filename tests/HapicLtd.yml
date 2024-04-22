@@ -1,3 +1,27 @@
+config:
+  phases:
+    - name: 300s_1rps
+      duration: 300
+      arrivalRate: 1
+  plugins:
+    fake-data:
+      randAmount:
+        min: 250000
+        max: 1000000
+      randNumber:
+        min: 1
+        max: 9
+  payload:
+    - path: "../data/hapic.csv"
+      fields:
+        - currencyCode
+        - thirdPartyID
+  variables:
+    transaction_type: ["CREDIT", "DEBIT"]
+    external_rule_outcome_keyword: ["guns", "alcohol", "golfing", "skydiving"]
+    counter_party_risk: ["HIGHRISK", "ODDRISK", "INVERTEDRISK", "TRIPLERISK"]
+    person_risk: ["HIGHRISK", "TEENYRISK", "PINKRISK", "PROPERRISK"]
+
 scenarios:
   - name: "Test Hapic Strategy in PP"
     flow:
