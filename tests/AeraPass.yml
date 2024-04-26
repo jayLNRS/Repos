@@ -1,0 +1,68 @@
+config:
+  phases:
+    - name: 300s_1rps
+      duration: 300
+      arrivalRate: 1
+  plugins:
+    fake-data:
+      randAmount:
+        min: 50000
+        max: 100000
+  payload:
+    - path: "../data/AeraPass.csv"
+      fields:
+        - effectiveDateTime          
+  variables:
+    transaction_type: ["CREDIT", "DEBIT"]
+    payment_type: ["Withdrawal", "Deposit", "Internal-Transfer"]
+    payment_Subtype: ["High", "Medium", "Low"]
+    Entity_type: ["Merchant", "Retail", "SME", "Corporate","Govt"]
+    Pre_Post: ["Pre", "Post"]
+
+scenarios:
+  - name: "Test Aerapass Strategy in PP"
+    flow:
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1600,
+                "accountReference": "AC516540",
+                "financialAccount": {
+                    "financialTransaction": [
+                        {
+                            "clientReference": "",
+                            "sortCode": "000000",
+                            "accountNumber": "10000002",
+                            "accountHolder": "",
+                            "creditOrDebit": "{{ transaction_type }}",  
+                            "currencyCode": "USD",
+                            "paymentType": "{{ payment_type }}",   
+                            "paymentSubtype": "{{ payment_Subtype }}",   
+                            "countryOfTransaction": "",
+                            "amount": "{{ $randAmount() }}",  
+                            "paymentReference": " John Johnson ",
+                            "effectiveDateTime": "{{ effectiveDateTime }}", 
+                            "externalRuleOutcomes": [
+                              {
+                                "code": "EntityType",
+                                "outcome": "{{ Entity_type }}"   
+                              },
+                              {
+                                "code": "AccountType",
+                                "outcome": "New"
+                              },
+                              {
+                                "code": "Monitored",
+                                "outcome": "True"
+                              },
+                              {
+                                "code": "PrePost",
+                                "outcome": "{{ Pre_Post }}"  
+                              }
+                            ]
+                        }
+                    ]
+                }  
+
+                } 
