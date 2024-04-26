@@ -14,6 +14,7 @@ on:
         description: "Test file"
         options:
           - AeraPass.yml
+          - Ardshin.yml
           - HapicLtd.yml
           - SiauliuBankas.yml
           - TradeStationAccountCreation.yml
