@@ -57,7 +57,9 @@ jobs:
           echo "URL=$url" >> $GITHUB_ENV
       - name: Post to Slack
         run: |
-          echo "[${{ inputs.environment }}] BE DB Cleaned and Vacuumed in $(date -d@$((${{ env.END }}-${{ env.START }})) -u +%H:%M:%S) <${{ env.PIPELINE  }}|Pipeline>, <${{ env.URL }}|Job>" | ppslack -f "${{ github.actor }}" -t "${{ env.CHANNEL }}"
+          echo "*[${{ inputs.environment }}] BE DB cleaned and vacuumed in $(date -d@$((${{ env.END }}-${{ env.START }})) -u +%H:%M:%S) (<${{ env.PIPELINE  }}|Pipeline>, <${{ env.URL }}|Job>)*" | ppslack -f "${{ github.actor }}" -t "${{ env.CHANNEL }}"
+
   stop-runner:
     needs: cleanup
     uses: ./.github/workflows/terminate_runner.yml
+
