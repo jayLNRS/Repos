@@ -18,6 +18,7 @@ on:
           - BaselineJourney.yml
           - BaselineStrategy.yml
           - HapicLtd.yml
+          - Paytrix.yml
           - SiauliuBankas.yml
           - TradeStationAccountCreation.yml
           - TradeStationOngoingTransactions.yml
