@@ -1,0 +1,107 @@
+config:
+  phases:
+    - name: 300s_1rps
+      duration: 300
+      arrivalRate: 1
+  ensure:
+    maxErrorRate: 0
+    thresholds:
+      - http.response_time.min: 1000
+      - http.response_time.mean: 2000
+      - http.response_time.p95: 2000
+      - http.response_time.p99: 3000
+      - http.response_time.max: 5000
+  fake-data:
+    randAmount:
+      min: 250000
+      max: 1000000
+    randNumber:
+      min: 100
+      max: 999
+  payload:
+    - path: ../data/WhiteHat.csv
+      fields:
+        - ThirdPartyID
+  variables:
+    transaction_type:
+      - CREDIT
+      - DEBIT
+    paymentType:
+      - Deposit
+      - Withdrawal
+      - ThirdPartyDeposit
+      - Payout
+    paymentSubtype:
+      - Prepaidcard
+      - Wallet
+      - Voucher
+
+scenarios:
+  - name: "Test WhiteHat Strategy in PP"
+    flow:
+      - post:
+          url: "/TruAccountAPI/rest/Accounts/v1/RunStrategy"
+          json:
+            {
+                "accountStrategyId": 1628,
+                "accountReference": "",
+                "application": {
+                    "country": "GBR",
+                    "customerReference": "",
+                    "clientApplicationPurpose": ""
+                },
+                "person": [
+                    {
+                        "clientReference": "",
+                        "role": "Applicant",
+                        "firstName": "Tester",
+                        "middleName": "",
+                        "lastName": "Testing",
+                        "isPrimary": true,
+                        "dateOfBirth": "",
+                        "emailAddress": "",
+                        "mobilePhoneNumber": "",
+                        "residentialAddress": [
+                            {
+                                "addressLine1": "1 high street",
+                                "addressLine2": "",
+                                "addressLine3": "Moscow",
+                                "addressLine4": "",
+                                "addressLine5": "",
+                                "addressLine7": "",
+                                "zipPostcode": "SE123ER",
+                                "country": "RUS"
+                            }
+                        ]
+                    }
+                ],
+                "financialAccount": {
+                    "financialTransaction": [
+                        {
+                            "clientReference": "",
+                            "sortCode": "00-11-29",
+                            "accountNumber": "",
+                            "accountHolder": "",
+                            "ThirdParty": "",
+                            "ThirdPartyID": "{{ ThirdPartyID }}", 
+                            "creditOrDebit": "{{ transaction_type }}",
+                            "currencyCode": "GBP",
+                            "effectiveDateTime": "2020-09-17 10:30:00",
+                            "amount": "{{ $randAmount() }}",
+                            "paymentType": "{{ paymentType }}",  
+                            "paymentSubtype": "{{ paymentSubtype }}",
+                            "paymentReference": "",
+                            "balance": "{{ $randAmount() }}",
+                            "bicCode": "",
+                            "IBAN": "TR330006100519786457849326",
+                            "countryOfTransaction": "GBR",
+                            "externalRuleOutcomes": [
+                                {
+                                    "code": "PEP",
+                                    "outcome": "FALSE"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
