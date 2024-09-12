@@ -1,5 +1,5 @@
 config:
-  target: "https://pp.trunarrative.cloud"
+  target: ""
   http:
     timeout: 60
   plugins:
@@ -8,5 +8,5 @@ config:
   defaults:
     headers:
       Content-Type: "application/json"
-      Authorization: "Basic {{ $env.TOKEN }}"
+      Authorization: "hgchgfcgfcgfc"
 
