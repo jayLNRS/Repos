@@ -1,5 +1,5 @@
 config:
-  target: "https://pp.trunarrative.cloud"
+  target: ""
   http:
     timeout: 60
   plugins:
