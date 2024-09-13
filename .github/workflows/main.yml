@@ -29,5 +29,8 @@ jobs:
 
       # Step 4: Run the Python script.
       - name: Run Python script
+        env:
+          RISK_TOKEN: ${{ secrets.RISK_TOKEN}}  # Secret reference
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} # Another secret
         run: |
           python GithubRestOperations.py  # Replace with the path to your Python script
