@@ -7,6 +7,6 @@
     "token":"os.getenv('GH_TOKEN')",
     "owner":"jayLNRS",
     "repo":"Repos",
-    "pull_request_number":"3"
+    "pull_request_number":"8"
     }
 }
