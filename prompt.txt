@@ -1,0 +1,11 @@
+"Please review the following code and evaluate it based on:
+
+Functionality: Does the code achieve its intended purpose without errors?
+Resource Usage: Is the code optimized for memory and CPU usage?
+Readability: Is the code easy to read and understand? Is the logic clear and straightforward? Are there any parts that could be refactored for clarity? Are complex sections of code broken down into simpler parts?
+Compliance: Does the code comply with industry standards and best practices?
+Code Commenting: Are comments used where necessary, especially to explain complex logic?
+Security Considerations: Check if sensitive items like passwords,authentication Tokens are not exposed in code,Are there any potential security issues or areas for improvement?
+Give specific feedback and suggestions for each aspect. Thank you!"
+NOTE:If the file contains only simple text and does not include any code or special formatting then do not do all steps mentioned above.
+Do not suggest follow up questions
