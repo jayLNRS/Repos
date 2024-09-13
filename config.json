@@ -3,6 +3,7 @@
     "api_url":"https://ln-chatgpt-bk.azurewebsites.net/api/message",
     "thread_id":"47c52bbe-06ae-42db-a282-a1d7ae0450ce"
     },
+
 "github":{
     "token":"os.getenv('GH_TOKEN')",
     "owner":"jayLNRS",
